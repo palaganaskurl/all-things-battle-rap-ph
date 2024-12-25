@@ -124,7 +124,7 @@ export default function WordPlayForm() {
             <FormItem>
               <FormLabel>Battle Emcee</FormLabel>
               <FormControl>
-                <Input placeholder="Battle Emcee" type="time" {...field} />
+                <Input placeholder="Battle Emcee" {...field} />
               </FormControl>
               <FormDescription>
                 Battle Emcee Who Spit The Wordplay

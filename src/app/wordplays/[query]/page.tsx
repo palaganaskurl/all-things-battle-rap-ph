@@ -1,12 +1,3 @@
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import WordPlaySearch from "@/components/custom/word-play-search";
 import { Suspense } from "react";
 import {
