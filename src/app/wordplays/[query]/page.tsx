@@ -6,7 +6,7 @@ import {
 } from "@/modules/wordplays/wordplays";
 import WordPlaysTable from "@/components/custom/word-plays-table";
 
-export default async function WordPlaysPage({
+export default async function WordPlaysPageWithQuery({
   params,
 }: {
   params: Promise<{ query: string }>;

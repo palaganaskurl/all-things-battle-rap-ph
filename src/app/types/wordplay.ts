@@ -1,8 +1,10 @@
 export type WordPlay = {
   wordPlay: string;
-  explanation: string;
-  battleTitle: string;
+  explanationOrContext: string;
+  videoName: string;
   videoURL: string;
   timestamp: string;
-  battleEmcee: string;
+  rapper: string;
+  isPerfectWordPlay: boolean;
+  date: string; // TODO: Update to date
 };

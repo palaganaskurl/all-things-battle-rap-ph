@@ -28,7 +28,7 @@ export default function WordPlaysTable({
             <TableHead>Explanation</TableHead>
             <TableHead>Battle Name</TableHead>
             <TableHead>Battle Emcee</TableHead>
-            <TableHead>Is Double Entendre?</TableHead>
+            <TableHead>Is Perfect Word Play?</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -59,10 +59,10 @@ export default function WordPlaysTable({
       return (
         <TableRow key={wordPlay.wordPlay}>
           <TableCell>{wordPlay.wordPlay}</TableCell>
-          <TableCell>{wordPlay.explanation}</TableCell>
-          <TableCell>{wordPlay.battleTitle}</TableCell>
-          <TableCell>{wordPlay.battleEmcee}</TableCell>
-          <TableCell>{wordPlay.battleEmcee}</TableCell>
+          <TableCell>{wordPlay.explanationOrContext}</TableCell>
+          <TableCell>{wordPlay.videoName}</TableCell>
+          <TableCell>{wordPlay.rapper}</TableCell>
+          <TableCell>{wordPlay.isPerfectWordPlay}</TableCell>
         </TableRow>
       );
     });
@@ -79,7 +79,7 @@ export default function WordPlaysTable({
           <TableHead>Explanation</TableHead>
           <TableHead>Battle Name</TableHead>
           <TableHead>Battle Emcee</TableHead>
-          <TableHead>Is Double Entendre?</TableHead>
+          <TableHead>Is Perfect Word Play?</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>{renderRows()}</TableBody>
