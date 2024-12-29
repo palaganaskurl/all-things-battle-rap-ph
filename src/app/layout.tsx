@@ -4,14 +4,9 @@ import "./globals.css";
 import {
   NavigationMenu,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
-import Link from "next/link";
-// import { usePathname } from "next/navigation";
 import NavigationLink from "@/components/custom/navigation-link";
-import { headers } from "next/headers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
