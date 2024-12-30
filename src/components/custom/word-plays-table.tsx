@@ -60,7 +60,16 @@ export default function WordPlaysTable({
         <TableRow key={wordPlay.wordPlay}>
           <TableCell>{wordPlay.wordPlay}</TableCell>
           <TableCell>{wordPlay.explanationOrContext}</TableCell>
-          <TableCell>{wordPlay.videoName}</TableCell>
+          <TableCell>
+            <a
+              href={wordPlay.videoURL}
+              target="_blank"
+              rel="noreferrer"
+              className="no-underline hover:underline"
+            >
+              {wordPlay.videoName}
+            </a>
+          </TableCell>
           <TableCell>{wordPlay.rapper}</TableCell>
           <TableCell>{wordPlay.isPerfectWordPlay}</TableCell>
         </TableRow>
