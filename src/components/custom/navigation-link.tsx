@@ -15,7 +15,8 @@ export default function NavigationLink({
   name: string;
 }) {
   const pathname = usePathname();
-  const isActive = href === pathname;
+  const first = pathname.split("/")[1];
+  const isActive = href.replace("/", "") === first;
 
   return (
     <Link href={href} legacyBehavior passHref>
