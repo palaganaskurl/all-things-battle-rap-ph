@@ -59,7 +59,11 @@ export default function WordPlaysTable({
       return (
         <TableRow key={wordPlay.wordPlay}>
           <TableCell>{wordPlay.wordPlay}</TableCell>
-          <TableCell>{wordPlay.explanationOrContext}</TableCell>
+          <TableCell>
+            <div className="whitespace-pre ">
+              {wordPlay.explanationOrContext}
+            </div>
+          </TableCell>
           <TableCell>
             <a
               href={wordPlay.videoURL}
