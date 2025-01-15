@@ -4,8 +4,8 @@ import { Input } from "@/components/ui/input";
 import { redirect } from "next/navigation";
 import { useState } from "react";
 
-export default function WordPlaySearch() {
-  const [searchQuery, setSearchQuery] = useState("");
+export default function WordPlaySearch({ query }: { query: string }) {
+  const [searchQuery, setSearchQuery] = useState(query);
   const handleSubmit = () => {
     redirect(`/wordplays/${searchQuery}`);
   };
@@ -13,6 +13,7 @@ export default function WordPlaySearch() {
   return (
     <div className="py-2">
       <Input
+        value={searchQuery}
         type="search"
         placeholder="Search Wordplays"
         onChange={(e) => {

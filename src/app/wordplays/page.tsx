@@ -11,7 +11,7 @@ export default async function WordPlaysPageRoot() {
 
   return (
     <div>
-      <WordPlaySearch />
+      <WordPlaySearch query="" />
 
       {/* TODO: Convert this to a footer component */}
       <div className="text-center mt-8">

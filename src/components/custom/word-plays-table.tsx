@@ -9,14 +9,16 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import Highlighter from "react-highlight-words";
 
 type WordPlaysTableProps =
-  | { isLoading: false; wordPlays: WordPlay[] }
-  | { isLoading: true; wordPlays?: never };
+  | { isLoading: false; wordPlays: WordPlay[]; query: string }
+  | { isLoading: true; wordPlays?: never; query?: string };
 
 export default function WordPlaysTable({
   isLoading,
   wordPlays,
+  query,
 }: WordPlaysTableProps) {
   if (isLoading) {
     return (
@@ -25,10 +27,10 @@ export default function WordPlaysTable({
         <TableHeader>
           <TableRow>
             <TableHead>Word Play</TableHead>
-            <TableHead>Explanation</TableHead>
+            <TableHead>Explanation / Context</TableHead>
             <TableHead>Battle Name</TableHead>
             <TableHead>Battle Emcee</TableHead>
-            <TableHead>Is Perfect Word Play?</TableHead>
+            <TableHead>Date</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -58,7 +60,13 @@ export default function WordPlaysTable({
     const rows = wordPlays.map((wordPlay) => {
       return (
         <TableRow key={wordPlay.wordPlay}>
-          <TableCell>{wordPlay.wordPlay}</TableCell>
+          <TableCell>
+            <Highlighter
+              searchWords={[query]}
+              autoEscape={true}
+              textToHighlight={wordPlay.wordPlay}
+            />
+          </TableCell>
           <TableCell>
             <div className="whitespace-pre ">
               {wordPlay.explanationOrContext}
@@ -75,7 +83,7 @@ export default function WordPlaysTable({
             </a>
           </TableCell>
           <TableCell>{wordPlay.rapper}</TableCell>
-          <TableCell>{wordPlay.isPerfectWordPlay}</TableCell>
+          <TableCell>{wordPlay.date}</TableCell>
         </TableRow>
       );
     });
@@ -85,14 +93,19 @@ export default function WordPlaysTable({
 
   return (
     <Table>
-      <TableCaption>Curated list from me :D or copyright :D</TableCaption>
+      <TableCaption>
+        All content on this website is curated and owned by{" "}
+        <a href="https://github.com/palaganaskurl">
+          https://github.com/palaganaskurl
+        </a>
+        . All rights reserved.
+      </TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead>Word Play</TableHead>
           <TableHead>Explanation</TableHead>
           <TableHead>Battle Name</TableHead>
           <TableHead>Battle Emcee</TableHead>
-          <TableHead>Is Perfect Word Play?</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>{renderRows()}</TableBody>

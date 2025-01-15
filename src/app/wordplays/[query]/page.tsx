@@ -11,20 +11,21 @@ export default async function WordPlaysPageWithQuery({
 }: {
   params: Promise<{ query: string }>;
 }) {
+  const query = (await params).query;
   const wordPlaysController = new WordPlays(new WordPlaysDatabasePostgreSQL());
-  const wordPlays = await wordPlaysController.searchWordPlays(
-    (
-      await params
-    ).query
-  );
+  const wordPlays = await wordPlaysController.searchWordPlays(query);
 
   return (
     <div>
       <div>
         <div>
-          <WordPlaySearch />
+          <WordPlaySearch query={query} />
           <Suspense fallback={<div>Loading</div>}>
-            <WordPlaysTable isLoading={false} wordPlays={wordPlays} />
+            <WordPlaysTable
+              isLoading={false}
+              wordPlays={wordPlays}
+              query={query}
+            />
           </Suspense>
         </div>
       </div>
