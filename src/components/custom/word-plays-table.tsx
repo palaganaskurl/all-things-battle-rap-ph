@@ -106,6 +106,7 @@ export default function WordPlaysTable({
           <TableHead>Explanation</TableHead>
           <TableHead>Battle Name</TableHead>
           <TableHead>Battle Emcee</TableHead>
+          <TableHead>Date</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>{renderRows()}</TableBody>
