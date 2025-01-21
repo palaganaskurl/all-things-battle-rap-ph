@@ -4,10 +4,10 @@ import { Input } from "@/components/ui/input";
 import { redirect } from "next/navigation";
 import { useState } from "react";
 
-export default function WordPlaySearch({ query }: { query: string }) {
+export default function LetterPlaySearch({ query }: { query: string }) {
   const [searchQuery, setSearchQuery] = useState(query);
   const handleSubmit = () => {
-    redirect(`/word-plays/${searchQuery.trim()}`);
+    redirect(`/letter-plays/${searchQuery.trim()}`);
   };
 
   return (
@@ -15,7 +15,7 @@ export default function WordPlaySearch({ query }: { query: string }) {
       <Input
         value={searchQuery}
         type="search"
-        placeholder="Search Wordplays"
+        placeholder="Search Anagrams / Palindromes"
         onChange={(e) => {
           setSearchQuery(e.target.value);
         }}

@@ -40,8 +40,14 @@ export default async function RootLayout({
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationLink
-                href="/wordplays"
+                href="/word-plays"
                 name="Word Plays"
+              ></NavigationLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationLink
+                href="/letter-plays"
+                name="Anagrams / Palindromes"
               ></NavigationLink>
             </NavigationMenuItem>
           </NavigationMenuList>

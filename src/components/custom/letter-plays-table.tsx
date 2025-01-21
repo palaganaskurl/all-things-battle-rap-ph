@@ -1,4 +1,4 @@
-import { WordPlay } from "@/app/types/word-play";
+import { LetterPlay } from "@/app/types/letter-play";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
   Table,
@@ -11,15 +11,15 @@ import {
 } from "@/components/ui/table";
 import Highlighter from "react-highlight-words";
 
-type WordPlaysTableProps =
-  | { isLoading: false; wordPlays: WordPlay[]; query: string }
-  | { isLoading: true; wordPlays?: never; query?: string };
+type LetterPlaysTableProps =
+  | { isLoading: false; letterPlays: LetterPlay[]; query: string }
+  | { isLoading: true; letterPlays?: never; query?: string };
 
-export default function WordPlaysTable({
+export default function LetterPlaysTable({
   isLoading,
-  wordPlays,
+  letterPlays,
   query,
-}: WordPlaysTableProps) {
+}: LetterPlaysTableProps) {
   const TableCaptionComponent = () => (
     <TableCaption>
       All content on this website is curated and owned by{" "}
@@ -36,7 +36,7 @@ export default function WordPlaysTable({
         {TableCaptionComponent()}
         <TableHeader>
           <TableRow>
-            <TableHead>Word Play</TableHead>
+            <TableHead>Anagram / Palindrome</TableHead>
             <TableHead>Explanation / Context</TableHead>
             <TableHead>Battle Name</TableHead>
             <TableHead>Battle Emcee</TableHead>
@@ -67,33 +67,33 @@ export default function WordPlaysTable({
   }
 
   const renderRows = () => {
-    const rows = wordPlays.map((wordPlay) => {
+    const rows = letterPlays.map((letterPlay) => {
       return (
-        <TableRow key={wordPlay.wordPlay}>
+        <TableRow key={letterPlay.letterPlay}>
           <TableCell>
             <Highlighter
               searchWords={[query]}
               autoEscape={true}
-              textToHighlight={wordPlay.wordPlay}
+              textToHighlight={letterPlay.letterPlay}
             />
           </TableCell>
           <TableCell>
             <div className="whitespace-pre ">
-              {wordPlay.explanationOrContext}
+              {letterPlay.explanationOrContext}
             </div>
           </TableCell>
           <TableCell>
             <a
-              href={wordPlay.videoURL}
+              href={letterPlay.videoURL}
               target="_blank"
               rel="noreferrer"
               className="no-underline hover:underline"
             >
-              {wordPlay.videoName}
+              {letterPlay.videoName}
             </a>
           </TableCell>
-          <TableCell>{wordPlay.rapper}</TableCell>
-          <TableCell>{wordPlay.date}</TableCell>
+          <TableCell>{letterPlay.rapper}</TableCell>
+          <TableCell>{letterPlay.date}</TableCell>
         </TableRow>
       );
     });

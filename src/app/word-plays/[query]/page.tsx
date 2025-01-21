@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import {
   WordPlays,
   WordPlaysDatabasePostgreSQL,
-} from "@/modules/wordplays/wordplays";
+} from "@/modules/word-plays/word-plays";
 import WordPlaysTable from "@/components/custom/word-plays-table";
 
 export default async function WordPlaysPageWithQuery({

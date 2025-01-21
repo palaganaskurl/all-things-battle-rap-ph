@@ -1,4 +1,4 @@
-export default function AdminLayout({
+export default function WordPlaysLayout({
   children,
 }: {
   children: React.ReactNode;

@@ -1,4 +1,4 @@
-import { WordPlay } from "@/app/types/wordplay";
+import { WordPlay } from "@/app/types/word-play";
 import sql from "@/modules/database/postgres";
 
 abstract class WordPlaysDatabase {
@@ -14,7 +14,7 @@ export class WordPlaysDatabasePostgreSQL extends WordPlaysDatabase {
     const ilike = `%${query}%`;
     const wordPlays = (await sql`
         SELECT * 
-        FROM "all-things-battle-rap-ph".tbl_wordplays AS wp
+        FROM "all-things-battle-rap-ph".tbl_word_plays AS wp
         WHERE wp."wordPlay" ILIKE ${ilike}
         ORDER BY wp."date" DESC
     `) as WordPlay[];
