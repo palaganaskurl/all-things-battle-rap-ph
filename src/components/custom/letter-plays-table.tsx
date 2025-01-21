@@ -9,6 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { nanoid } from "nanoid";
 import Highlighter from "react-highlight-words";
 
 type LetterPlaysTableProps =
@@ -69,7 +70,7 @@ export default function LetterPlaysTable({
   const renderRows = () => {
     const rows = letterPlays.map((letterPlay) => {
       return (
-        <TableRow key={letterPlay.letterPlay}>
+        <TableRow key={nanoid()}>
           <TableCell>
             <Highlighter
               searchWords={[query]}

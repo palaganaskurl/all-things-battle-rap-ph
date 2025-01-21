@@ -10,6 +10,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import Highlighter from "react-highlight-words";
+import { nanoid } from "nanoid";
 
 type WordPlaysTableProps =
   | { isLoading: false; wordPlays: WordPlay[]; query: string }
@@ -69,7 +70,7 @@ export default function WordPlaysTable({
   const renderRows = () => {
     const rows = wordPlays.map((wordPlay) => {
       return (
-        <TableRow key={wordPlay.wordPlay}>
+        <TableRow key={nanoid()}>
           <TableCell>
             <Highlighter
               searchWords={[query]}
