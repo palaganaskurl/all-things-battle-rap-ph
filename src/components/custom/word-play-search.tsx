@@ -7,7 +7,7 @@ import { useState } from "react";
 export default function WordPlaySearch({ query }: { query: string }) {
   const [searchQuery, setSearchQuery] = useState(query);
   const handleSubmit = () => {
-    redirect(`/wordplays/${searchQuery}`);
+    redirect(`/wordplays/${searchQuery.trim()}`);
   };
 
   return (

@@ -11,7 +11,7 @@ export default async function WordPlaysPageWithQuery({
 }: {
   params: Promise<{ query: string }>;
 }) {
-  const query = (await params).query;
+  const query = (await params).query.trim();
   const wordPlaysController = new WordPlays(new WordPlaysDatabasePostgreSQL());
   const wordPlays = await wordPlaysController.searchWordPlays(query);
 
