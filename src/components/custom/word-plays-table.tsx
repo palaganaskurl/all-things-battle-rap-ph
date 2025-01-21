@@ -20,10 +20,20 @@ export default function WordPlaysTable({
   wordPlays,
   query,
 }: WordPlaysTableProps) {
+  const TableCaptionComponent = () => (
+    <TableCaption>
+      All content on this website is curated and owned by{" "}
+      <a href="https://github.com/palaganaskurl">
+        https://github.com/palaganaskurl
+      </a>
+      . All rights reserved.
+    </TableCaption>
+  );
+
   if (isLoading) {
     return (
       <Table>
-        <TableCaption>Curated list from me :D or copyright :D</TableCaption>
+        {TableCaptionComponent()}
         <TableHeader>
           <TableRow>
             <TableHead>Word Play</TableHead>
@@ -93,13 +103,7 @@ export default function WordPlaysTable({
 
   return (
     <Table>
-      <TableCaption>
-        All content on this website is curated and owned by{" "}
-        <a href="https://github.com/palaganaskurl">
-          https://github.com/palaganaskurl
-        </a>
-        . All rights reserved.
-      </TableCaption>
+      {TableCaptionComponent()}
       <TableHeader>
         <TableRow>
           <TableHead>Word Play</TableHead>
