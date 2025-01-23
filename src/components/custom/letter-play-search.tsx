@@ -1,13 +1,14 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
-import { redirect } from "next/navigation";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LetterPlaySearch({ query }: { query: string }) {
   const [searchQuery, setSearchQuery] = useState(query);
+  const router = useRouter();
   const handleSubmit = () => {
-    redirect(`/letter-plays/${searchQuery.trim()}`);
+    router.push(`/letter-plays/${searchQuery.trim()}`);
   };
 
   return (
