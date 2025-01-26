@@ -16,7 +16,7 @@ export class LetterPlaysDatabasePostgreSQL extends LetterPlaysDatabase {
         SELECT * 
         FROM "all-things-battle-rap-ph".tbl_letter_plays AS lp
         WHERE lp."letterPlay" ILIKE ${ilike}
-        ORDER BY lp."date" DESC
+        ORDER BY lp."dateTimestamp" ASC
     `) as LetterPlay[];
 
     return letterPlays;

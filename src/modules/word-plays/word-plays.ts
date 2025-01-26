@@ -16,7 +16,7 @@ export class WordPlaysDatabasePostgreSQL extends WordPlaysDatabase {
         SELECT * 
         FROM "all-things-battle-rap-ph".tbl_word_plays AS wp
         WHERE wp."wordPlay" ILIKE ${ilike}
-        ORDER BY wp."date" DESC
+        ORDER BY wp."dateTimestamp" ASC
     `) as WordPlay[];
 
     return wordPlays;
