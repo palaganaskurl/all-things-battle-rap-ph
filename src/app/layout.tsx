@@ -33,11 +33,16 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased font-[family-name:var(--font-geist-sans)]`}
       >
-        <NavigationMenu>
+        <NavigationMenu className="flex justify-between p-4 min-w-full border-b">
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationLink href="/" name="Home"></NavigationLink>
+              <NavigationLink
+                href="/"
+                name="All Things Battle Rap PH"
+              ></NavigationLink>
             </NavigationMenuItem>
+          </NavigationMenuList>
+          <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationLink
                 href="/word-plays"
