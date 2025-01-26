@@ -37,11 +37,11 @@ export default function LetterPlaysTable({
         {TableCaptionComponent()}
         <TableHeader>
           <TableRow>
-            <TableHead>Anagram / Palindrome</TableHead>
-            <TableHead>Explanation / Context</TableHead>
-            <TableHead>Battle Name</TableHead>
-            <TableHead>Battle Emcee</TableHead>
-            <TableHead>Date</TableHead>
+            <TableHead className="w-15">Word Play</TableHead>
+            <TableHead className="w-30">Explanation</TableHead>
+            <TableHead className="w-25">Battle Name</TableHead>
+            <TableHead className="w-10">Battle Emcee</TableHead>
+            <TableHead className="w-10">Date</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -79,7 +79,7 @@ export default function LetterPlaysTable({
             />
           </TableCell>
           <TableCell>
-            <div className="whitespace-pre ">
+            <div className="whitespace-pre text-balance break-words">
               {letterPlay.explanationOrContext}
             </div>
           </TableCell>
@@ -107,11 +107,11 @@ export default function LetterPlaysTable({
       {TableCaptionComponent()}
       <TableHeader>
         <TableRow>
-          <TableHead>Word Play</TableHead>
-          <TableHead>Explanation</TableHead>
-          <TableHead>Battle Name</TableHead>
-          <TableHead>Battle Emcee</TableHead>
-          <TableHead>Date</TableHead>
+          <TableHead className="w-15">Word Play</TableHead>
+          <TableHead className="w-30">Explanation</TableHead>
+          <TableHead className="w-25">Battle Name</TableHead>
+          <TableHead className="w-10">Battle Emcee</TableHead>
+          <TableHead className="w-10">Date</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>{renderRows()}</TableBody>
