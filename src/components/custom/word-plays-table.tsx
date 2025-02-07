@@ -11,6 +11,13 @@ import {
 } from "@/components/ui/table";
 import Highlighter from "react-highlight-words";
 import { nanoid } from "nanoid";
+import {
+  DateHeader,
+  ExplanationContextHeader,
+  RapperHeader,
+  VideoLinkHeader,
+  WordPlayHeader,
+} from "@/constants";
 
 type WordPlaysTableProps =
   | { isLoading: false; wordPlays: WordPlay[]; query: string }
@@ -37,29 +44,29 @@ export default function WordPlaysTable({
         {TableCaptionComponent()}
         <TableHeader>
           <TableRow>
-            <TableHead className="w-15">Word Play</TableHead>
-            <TableHead className="w-30">Explanation</TableHead>
-            <TableHead className="w-25">Battle Name</TableHead>
-            <TableHead className="w-10">Battle Emcee</TableHead>
-            <TableHead className="w-10">Date</TableHead>
+            <TableHead className="w-15">{WordPlayHeader}</TableHead>
+            <TableHead className="w-30">{ExplanationContextHeader}</TableHead>
+            <TableHead className="w-25">{VideoLinkHeader}</TableHead>
+            <TableHead className="w-10">{RapperHeader}</TableHead>
+            <TableHead className="w-10">{DateHeader}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           <TableRow>
             <TableCell>
-              <Skeleton className="w-[100px] h-[20px] rounded-full" />
+              <Skeleton className="w-100 h-[20px] rounded-full" />
             </TableCell>
             <TableCell>
-              <Skeleton className="w-[100px] h-[20px] rounded-full" />
+              <Skeleton className="w-100 h-[20px] rounded-full" />
             </TableCell>
             <TableCell>
-              <Skeleton className="w-[100px] h-[20px] rounded-full" />
+              <Skeleton className="w-100 h-[20px] rounded-full" />
             </TableCell>
             <TableCell>
-              <Skeleton className="w-[100px] h-[20px] rounded-full" />
+              <Skeleton className="w-100 h-[20px] rounded-full" />
             </TableCell>
             <TableCell>
-              <Skeleton className="w-[100px] h-[20px] rounded-full" />
+              <Skeleton className="w-100 h-[20px] rounded-full" />
             </TableCell>
           </TableRow>
         </TableBody>
@@ -107,11 +114,11 @@ export default function WordPlaysTable({
       {TableCaptionComponent()}
       <TableHeader>
         <TableRow>
-          <TableHead className="w-15">Word Play</TableHead>
-          <TableHead className="w-30">Explanation</TableHead>
-          <TableHead className="w-25">Battle Name</TableHead>
-          <TableHead className="w-10">Battle Emcee</TableHead>
-          <TableHead className="w-10">Date</TableHead>
+          <TableHead className="w-15">{WordPlayHeader}</TableHead>
+          <TableHead className="w-30">{ExplanationContextHeader}</TableHead>
+          <TableHead className="w-25">{VideoLinkHeader}</TableHead>
+          <TableHead className="w-10">{RapperHeader}</TableHead>
+          <TableHead className="w-10">{DateHeader}</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>{renderRows()}</TableBody>
