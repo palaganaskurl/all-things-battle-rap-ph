@@ -9,25 +9,21 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import Highlighter from "react-highlight-words";
 import { nanoid } from "nanoid";
 import {
-  DateHeader,
   ExplanationContextHeader,
   RapperHeader,
-  VideoLinkHeader,
   WordPlayHeader,
 } from "@/constants";
 
-type WordPlaysTableProps =
-  | { isLoading: false; wordPlays: WordPlay[]; query: string }
-  | { isLoading: true; wordPlays?: never; query?: string };
+type WordPlaysByBattleTableProps =
+  | { isLoading: false; wordPlays: WordPlay[] }
+  | { isLoading: true; wordPlays?: never };
 
-export default function WordPlaysTable({
+export default function WordPlaysByBattleTable({
   isLoading,
   wordPlays,
-  query,
-}: WordPlaysTableProps) {
+}: WordPlaysByBattleTableProps) {
   const TableCaptionComponent = () => (
     <TableCaption>
       All content on this website is curated and owned by{" "}
@@ -44,23 +40,15 @@ export default function WordPlaysTable({
         {TableCaptionComponent()}
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[15%]">{WordPlayHeader}</TableHead>
-            <TableHead className="w-[30%]">
+            <TableHead className="w-[30%]">{WordPlayHeader}</TableHead>
+            <TableHead className="w-[50%]">
               {ExplanationContextHeader}
             </TableHead>
-            <TableHead className="w-[25%]">{VideoLinkHeader}</TableHead>
-            <TableHead className="w-[10%]">{RapperHeader}</TableHead>
-            <TableHead className="w-[10%]">{DateHeader}</TableHead>
+            <TableHead className="w-[20%]">{RapperHeader}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           <TableRow>
-            <TableCell>
-              <Skeleton className="w-100 h-[20px] rounded-full" />
-            </TableCell>
-            <TableCell>
-              <Skeleton className="w-100 h-[20px] rounded-full" />
-            </TableCell>
             <TableCell>
               <Skeleton className="w-100 h-[20px] rounded-full" />
             </TableCell>
@@ -80,30 +68,13 @@ export default function WordPlaysTable({
     const rows = wordPlays.map((wordPlay) => {
       return (
         <TableRow key={nanoid()}>
-          <TableCell>
-            <Highlighter
-              searchWords={[query]}
-              autoEscape={true}
-              textToHighlight={wordPlay.wordPlay}
-            />
-          </TableCell>
+          <TableCell>{wordPlay.wordPlay}</TableCell>
           <TableCell>
             <div className="whitespace-pre text-balance break-words">
               {wordPlay.explanationOrContext}
             </div>
           </TableCell>
-          <TableCell>
-            <a
-              href={wordPlay.videoURLWithTimestamp}
-              target="_blank"
-              rel="noreferrer"
-              className="no-underline hover:underline"
-            >
-              {wordPlay.videoName}
-            </a>
-          </TableCell>
           <TableCell>{wordPlay.rapper}</TableCell>
-          <TableCell>{wordPlay.date}</TableCell>
         </TableRow>
       );
     });
@@ -116,11 +87,9 @@ export default function WordPlaysTable({
       {TableCaptionComponent()}
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[15%]">{WordPlayHeader}</TableHead>
-          <TableHead className="w-[30%]">{ExplanationContextHeader}</TableHead>
-          <TableHead className="w-[25%]">{VideoLinkHeader}</TableHead>
-          <TableHead className="w-[10%]">{RapperHeader}</TableHead>
-          <TableHead className="w-[10%]">{DateHeader}</TableHead>
+          <TableHead className="w-[30%]">{WordPlayHeader}</TableHead>
+          <TableHead className="w-[50%]">{ExplanationContextHeader}</TableHead>
+          <TableHead className="w-[20%]">{RapperHeader}</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>{renderRows()}</TableBody>

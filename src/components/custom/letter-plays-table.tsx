@@ -44,11 +44,13 @@ export default function LetterPlaysTable({
         {TableCaptionComponent()}
         <TableHeader>
           <TableRow>
-            <TableHead className="w-15">{AnagramPalindromeHeader}</TableHead>
-            <TableHead className="w-30">{ExplanationContextHeader}</TableHead>
-            <TableHead className="w-25">{VideoLinkHeader}</TableHead>
-            <TableHead className="w-10">{RapperHeader}</TableHead>
-            <TableHead className="w-10">{DateHeader}</TableHead>
+            <TableHead className="w-[15%]">{AnagramPalindromeHeader}</TableHead>
+            <TableHead className="w-[30%]">
+              {ExplanationContextHeader}
+            </TableHead>
+            <TableHead className="w-[25%]">{VideoLinkHeader}</TableHead>
+            <TableHead className="w-[10%]">{RapperHeader}</TableHead>
+            <TableHead className="w-[10%]">{DateHeader}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -92,7 +94,7 @@ export default function LetterPlaysTable({
           </TableCell>
           <TableCell>
             <a
-              href={letterPlay.videoURL}
+              href={letterPlay.videoURLWithTimestamp}
               target="_blank"
               rel="noreferrer"
               className="no-underline hover:underline"
@@ -114,11 +116,11 @@ export default function LetterPlaysTable({
       {TableCaptionComponent()}
       <TableHeader>
         <TableRow>
-          <TableHead className="w-15">{AnagramPalindromeHeader}</TableHead>
-          <TableHead className="w-30">{ExplanationContextHeader}</TableHead>
-          <TableHead className="w-25">{VideoLinkHeader}</TableHead>
-          <TableHead className="w-10">{RapperHeader}</TableHead>
-          <TableHead className="w-10">{DateHeader}</TableHead>
+          <TableHead className="w-[15%]">{AnagramPalindromeHeader}</TableHead>
+          <TableHead className="w-[30%]">{ExplanationContextHeader}</TableHead>
+          <TableHead className="w-[25%]">{VideoLinkHeader}</TableHead>
+          <TableHead className="w-[10%]">{RapperHeader}</TableHead>
+          <TableHead className="w-[10%]">{DateHeader}</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>{renderRows()}</TableBody>

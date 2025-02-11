@@ -5,5 +5,8 @@ export type LetterPlay = {
   videoURL: string;
   timestamp: string;
   rapper: string;
-  date: string; // TODO: Update to date
+  date: string;
+  dateTimestamp: number;
+  videoURLWithTimestamp: string;
+  videoID: string;
 };

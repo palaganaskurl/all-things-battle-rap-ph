@@ -1,8 +1,10 @@
-import { WordPlay } from "@/app/types/word-play";
+import { WordPlay, BattlePreview } from "@/app/types/word-play";
 import sql from "@/modules/database/postgres";
 
 abstract class WordPlaysDatabase {
   abstract search(query: string): Promise<WordPlay[]>;
+  abstract getUniqueVideos(): Promise<BattlePreview[]>;
+  abstract getWordPlaysByVideoID(videoID: string): Promise<WordPlay[]>;
 }
 
 export class WordPlaysDatabasePostgreSQL extends WordPlaysDatabase {
@@ -21,6 +23,26 @@ export class WordPlaysDatabasePostgreSQL extends WordPlaysDatabase {
 
     return wordPlays;
   }
+
+  async getUniqueVideos(): Promise<BattlePreview[]> {
+    const videos = (await sql`
+        SELECT DISTINCT wp."videoID", wp."videoName"
+        FROM "all-things-battle-rap-ph".tbl_word_plays AS wp
+    `) as BattlePreview[];
+
+    return videos;
+  }
+
+  async getWordPlaysByVideoID(videoID: string): Promise<WordPlay[]> {
+    const wordPlays = (await sql`
+        SELECT * 
+        FROM "all-things-battle-rap-ph".tbl_word_plays AS wp
+        WHERE wp."videoID" = ${videoID}
+        ORDER BY wp."timestamp" DESC
+    `) as WordPlay[];
+
+    return wordPlays;
+  }
 }
 
 export class WordPlays {
@@ -32,5 +54,13 @@ export class WordPlays {
 
   async searchWordPlays(query: string): Promise<WordPlay[]> {
     return await this.#database.search(query);
+  }
+
+  async getUniqueVideos(): Promise<BattlePreview[]> {
+    return await this.#database.getUniqueVideos();
+  }
+
+  async getWordPlaysByVideoID(videoID: string): Promise<WordPlay[]> {
+    return await this.#database.getWordPlaysByVideoID(videoID);
   }
 }

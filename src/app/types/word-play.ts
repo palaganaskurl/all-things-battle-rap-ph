@@ -5,6 +5,10 @@ export type WordPlay = {
   videoURL: string;
   timestamp: string;
   rapper: string;
-  isPerfectWordPlay: boolean;
-  date: string; // TODO: Update to date
+  date: string;
+  dateTimestamp: number;
+  videoURLWithTimestamp: string;
+  videoID: string;
 };
+
+export type BattlePreview = Pick<WordPlay, "videoID" | "videoName">;
