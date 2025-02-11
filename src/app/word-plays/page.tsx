@@ -4,7 +4,6 @@ import {
   WordPlays,
   WordPlaysDatabasePostgreSQL,
 } from "@/modules/word-plays/word-plays";
-import { BattlePreview } from "../types/word-play";
 
 export default async function WordPlaysPageRoot() {
   const wordPlaysController = new WordPlays(new WordPlaysDatabasePostgreSQL());

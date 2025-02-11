@@ -11,7 +11,7 @@ export default function BattleCard({ videoName, videoID }: BattlePreview) {
   const router = useRouter();
   const openBattleWordPlays = useCallback(() => {
     router.push(`/word-plays-by-battle/${videoID}`);
-  }, [videoID]);
+  }, [videoID, router]);
 
   return (
     <Card
