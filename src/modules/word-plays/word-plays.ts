@@ -38,7 +38,7 @@ export class WordPlaysDatabasePostgreSQL extends WordPlaysDatabase {
         SELECT * 
         FROM "all-things-battle-rap-ph".tbl_word_plays AS wp
         WHERE wp."videoID" = ${videoID}
-        ORDER BY wp."timestamp" DESC
+        ORDER BY wp."timestampInSeconds" ASC
     `) as WordPlay[];
 
     return wordPlays;
