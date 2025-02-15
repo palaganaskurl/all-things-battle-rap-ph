@@ -1,4 +1,5 @@
-import { WordPlay, BattlePreview } from "@/app/types/word-play";
+import { BattlePreview } from "@/app/types/battles";
+import { WordPlay } from "@/app/types/word-play";
 import sql from "@/modules/database/postgres";
 
 abstract class WordPlaysDatabase {
