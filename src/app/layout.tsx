@@ -30,10 +30,11 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased font-[family-name:var(--font-geist-sans)]`}
       >
-        <NavigationMenu className="flex justify-between p-4 min-w-full border-b">
+        <NavigationMenu className="flex md:flex-row flex-col justify-start md:justify-between p-4 min-w-full border-b items-start md:items-center">
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationLink

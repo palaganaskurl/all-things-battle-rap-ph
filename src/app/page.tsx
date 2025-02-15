@@ -47,22 +47,20 @@ export default async function Home() {
             opts={{
               align: "center",
             }}
-            className="w-full max-w-4xl"
+            className="w-full max-w-[70%]"
           >
             <CarouselContent>
               {latestReleases.map((release, index) => (
-                <CarouselItem key={index} className="">
+                <CarouselItem key={index} className="md:basis-1/1 lg:basis-1/1">
                   <div className="p-1">
-                    <div>
-                      <AspectRatio ratio={16 / 9} className="bg-muted">
-                        <Image
-                          src={release.thumbnail}
-                          alt="Photo by Drew Beamer"
-                          fill
-                          className="h-full w-full rounded-md object-cover"
-                        />
-                      </AspectRatio>
-                    </div>
+                    <AspectRatio ratio={16 / 9} className="bg-muted">
+                      <Image
+                        src={release.thumbnail}
+                        alt="Photo by Drew Beamer"
+                        fill
+                        className="h-full w-full rounded-md object-cover"
+                      />
+                    </AspectRatio>
                   </div>
                 </CarouselItem>
               ))}
@@ -72,9 +70,9 @@ export default async function Home() {
           </Carousel>
         </div>
       </section>
-      <section className="flex flex-col gap-4">
+      <section className="flex flex-col gap-4 px-4 md:px-0">
         <div className="flex justify-center mt-4">
-          <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-2xl">
+          <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-2xl text-center">
             Analyzed Battle Leagues
           </h1>
         </div>

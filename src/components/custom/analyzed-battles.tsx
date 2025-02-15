@@ -12,7 +12,7 @@ interface StatisticsSectionProps {
 
 export function AnalyzedBattles({ battleLeagues }: StatisticsSectionProps) {
   return (
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid md:grid-cols-4 grid-cols-1 gap-4">
       {battleLeagues.map((league) => (
         <Card key={league.name} className="flex flex-col">
           <CardHeader className="flex-grow">
