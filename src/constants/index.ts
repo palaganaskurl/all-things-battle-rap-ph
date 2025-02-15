@@ -1,4 +1,4 @@
-export const WordPlayHeader = "WordPlay";
+export const WordPlayHeader = "Word Play";
 export const ExplanationContextHeader = "Explanation / Context";
 export const VideoLinkHeader = "Video Link";
 export const RapperHeader = "Rapper";

@@ -15,6 +15,7 @@ export default async function WordPlaysPageRoot() {
         key={`battle-${index}`}
         videoName={battle.videoName}
         videoID={battle.videoID}
+        redirectPrefix="/word-plays-by-battle"
       />
     ));
   };

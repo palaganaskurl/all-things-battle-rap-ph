@@ -3,14 +3,18 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { BattlePreview } from "@/app/types/word-play";
 import { useCallback } from "react";
 import { useRouter } from "next/navigation";
+import { BattlePreview } from "@/app/types/battles";
 
-export default function BattleCard({ videoName, videoID }: BattlePreview) {
+export default function BattleCard({
+  videoName,
+  videoID,
+  redirectPrefix,
+}: BattlePreview) {
   const router = useRouter();
   const openBattleWordPlays = useCallback(() => {
-    router.push(`/word-plays-by-battle/${videoID}`);
+    router.push(`${redirectPrefix}/${videoID}`);
   }, [videoID, router]);
 
   return (

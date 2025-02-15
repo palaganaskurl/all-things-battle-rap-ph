@@ -10,5 +10,3 @@ export type WordPlay = {
   videoURLWithTimestamp: string;
   videoID: string;
 };
-
-export type BattlePreview = Pick<WordPlay, "videoID" | "videoName">;
