@@ -15,7 +15,7 @@ export default function BattleCard({
   const router = useRouter();
   const openBattleWordPlays = useCallback(() => {
     router.push(`${redirectPrefix}/${videoID}`);
-  }, [videoID, router]);
+  }, [videoID, router, redirectPrefix]);
 
   return (
     <Card
