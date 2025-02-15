@@ -80,6 +80,9 @@ export default async function Home() {
         </div>
         <AnalyzedBattles battleLeagues={battleLeagues} />
       </section>
+      <section className="gap-4">
+        <br />
+      </section>
     </div>
   );
 }
