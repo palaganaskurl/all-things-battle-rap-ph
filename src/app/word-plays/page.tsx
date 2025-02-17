@@ -24,7 +24,9 @@ export default async function WordPlaysPageRoot() {
     <div>
       <WordPlaySearch query="" />
       <div className="mt-4 flex flex-col">
-        <div className="grid grid-cols-3 gap-4">{renderBattleCards()}</div>
+        <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
+          {renderBattleCards()}
+        </div>
       </div>
     </div>
   );
