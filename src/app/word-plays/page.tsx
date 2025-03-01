@@ -25,7 +25,7 @@ export default async function WordPlaysPageRoot() {
       <div>
         <p className="leading-7 [&:not(:first-child)]:mt-6">
           Collection of double entendres, syllable plays, homophones, webbings,
-          and other word plays in battle rap.
+          puns, name plays, and other word plays in battle rap.
         </p>
       </div>
       <WordPlaySearch query="" />
