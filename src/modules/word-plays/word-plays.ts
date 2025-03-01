@@ -16,7 +16,7 @@ export class WordPlaysDatabasePostgreSQL extends WordPlaysDatabase {
   async search(query: string): Promise<WordPlay[]> {
     const ilike = `%${query}%`;
     const wordPlays = (await sql`
-        SELECT * 
+        SELECT *
         FROM "all-things-battle-rap-ph".tbl_word_plays AS wp
         WHERE wp."wordPlay" ILIKE ${ilike}
         ORDER BY wp."dateTimestamp" ASC
@@ -27,8 +27,9 @@ export class WordPlaysDatabasePostgreSQL extends WordPlaysDatabase {
 
   async getUniqueVideos(): Promise<BattlePreview[]> {
     const videos = (await sql`
-        SELECT DISTINCT wp."videoID", wp."videoName"
+        SELECT DISTINCT wp."videoID", wp."videoName", wp."dateTimestamp"
         FROM "all-things-battle-rap-ph".tbl_word_plays AS wp
+        ORDER BY wp."dateTimestamp" ASC
     `) as BattlePreview[];
 
     return videos;
@@ -36,7 +37,7 @@ export class WordPlaysDatabasePostgreSQL extends WordPlaysDatabase {
 
   async getWordPlaysByVideoID(videoID: string): Promise<WordPlay[]> {
     const wordPlays = (await sql`
-        SELECT * 
+        SELECT *
         FROM "all-things-battle-rap-ph".tbl_word_plays AS wp
         WHERE wp."videoID" = ${videoID}
         ORDER BY wp."timestampInSeconds" ASC
