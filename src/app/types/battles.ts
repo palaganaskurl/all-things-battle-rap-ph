@@ -1,6 +1,12 @@
+export type BattleLeagues = "fliptop" | "motus";
+
 export type AnalyzedBattle = {
   done_count: number;
   all_count: number;
+};
+
+export type BattleDataByLeague = {
+  [key in BattleLeagues]: AnalyzedBattle;
 };
 
 export type BattlePreview = {

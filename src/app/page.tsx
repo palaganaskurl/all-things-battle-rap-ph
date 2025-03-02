@@ -8,7 +8,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { AnalyzedBattles } from "@/components/custom/analyzed-battles";
-import { AnalyzedBattle } from "@/app/types/battles";
+import { BattleDataByLeague } from "@/app/types/battles";
 import { promises as fs } from "fs";
 
 export default async function Home() {
@@ -22,14 +22,14 @@ export default async function Home() {
       thumbnail: "https://img.youtube.com/vi/huSFmwPfu4Y/maxresdefault.jpg",
     },
   ];
-  const flipTopFile = await fs.readFile(
-    process.cwd() + "/src/app/data/word-play/fliptop.json",
+  const allBattleFiles = await fs.readFile(
+    process.cwd() + "/src/app/data/all_battles.json",
     "utf8"
   );
-  const flipTopData: AnalyzedBattle = JSON.parse(flipTopFile);
+  const battleDataByLeague: BattleDataByLeague = JSON.parse(allBattleFiles);
   const battleLeagues = [
-    { name: "FlipTop Battle League", ...flipTopData },
-    { name: "Motus Battle League", done_count: 0, all_count: 0 },
+    { name: "FlipTop Battle League", ...battleDataByLeague["fliptop"] },
+    { name: "Motus Battle League", ...battleDataByLeague["motus"] },
     { name: "Sunugan Rap Battle League", done_count: 0, all_count: 0 },
     { name: "Pulo Battle League", done_count: 0, all_count: 0 },
   ];
