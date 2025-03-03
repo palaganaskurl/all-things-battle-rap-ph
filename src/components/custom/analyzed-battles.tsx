@@ -15,7 +15,7 @@ export function AnalyzedBattles({ battleLeagues }: StatisticsSectionProps) {
     <div className="grid md:grid-cols-4 grid-cols-2 gap-4">
       {battleLeagues.map((league) => (
         <Card key={league.name} className="flex flex-col">
-          <CardHeader className="flex-grow">
+          <CardHeader className="grow">
             <CardTitle className="text-lg font-semibold text-center">
               {league.name}
             </CardTitle>

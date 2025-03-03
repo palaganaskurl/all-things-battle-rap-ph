@@ -22,10 +22,10 @@ export default function BattleCard({
       className="flex flex-col overflow-hidden transition-all ease-in-out duration-300 hover:shadow-xl hover:cursor-pointer"
       onClick={openBattleWordPlays}
     >
-      <CardHeader className="flex-grow">
+      <CardHeader className="grow">
         <CardTitle>{videoName}</CardTitle>
       </CardHeader>
-      <CardContent className="flex-grow">
+      <CardContent className="grow">
         <AspectRatio ratio={16 / 9}>
           <Image
             src={`https://img.youtube.com/vi/${videoID}/maxresdefault.jpg`}
