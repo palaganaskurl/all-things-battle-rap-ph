@@ -28,7 +28,7 @@ export default async function Home() {
   );
   const battleDataByLeague: BattleDataByLeague = JSON.parse(allBattleFiles);
   const battleLeagues = [
-    { name: "FlipTop Battle League", ...battleDataByLeague["fliptop"] },
+    { name: "FlipTop", ...battleDataByLeague["fliptop"] },
     { name: "Motus Battle League", ...battleDataByLeague["motus"] },
     { name: "Sunugan Rap Battle League", done_count: 0, all_count: 0 },
     { name: "Pulo Battle League", done_count: 0, all_count: 0 },
