@@ -6,6 +6,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { BattlePreview } from "@/app/types/battles";
+import { useState, useEffect } from "react";
 
 export default function BattleCard({
   videoName,
@@ -16,6 +17,13 @@ export default function BattleCard({
   const openBattleWordPlays = useCallback(() => {
     router.push(`${redirectPrefix}/${videoID}`);
   }, [videoID, router, redirectPrefix]);
+  const [cannotGetThumbnail, setCannotGetThumbnail] = useState(false);
+  const imageSrc = `https://img.youtube.com/vi/${videoID}/maxresdefault.jpg`;
+  const fallbackSrc = `https://img.youtube.com/vi/${videoID}/hqdefault.jpg`;
+
+  useEffect(() => {
+    setCannotGetThumbnail(false);
+  }, [imageSrc]);
 
   return (
     <Card
@@ -25,10 +33,10 @@ export default function BattleCard({
       <CardHeader className="grow">
         <CardTitle>{videoName}</CardTitle>
       </CardHeader>
-      <CardContent className="grow">
+      <CardContent className="grow flex items-end">
         <AspectRatio ratio={16 / 9}>
           <Image
-            src={`https://img.youtube.com/vi/${videoID}/maxresdefault.jpg`}
+            src={cannotGetThumbnail ? fallbackSrc : imageSrc}
             alt="Image"
             className="rounded-md object-cover"
             fill
@@ -36,6 +44,9 @@ export default function BattleCard({
               objectFit: "contain",
             }}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            onError={() => {
+              setCannotGetThumbnail(true);
+            }}
           />
         </AspectRatio>
       </CardContent>
