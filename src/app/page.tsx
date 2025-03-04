@@ -35,7 +35,7 @@ export default async function Home() {
   ];
 
   return (
-    <div className="container mx-auto gap-4">
+    <div className="container gap-4">
       <section className="flex flex-col gap-4">
         <div className="flex justify-center mt-4">
           <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-2xl">
