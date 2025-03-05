@@ -22,6 +22,7 @@ export default async function Home() {
       thumbnail: "https://img.youtube.com/vi/huSFmwPfu4Y/maxresdefault.jpg",
     },
   ];
+  console.error(process.cwd() + "/src/data/all_battles.json");
   const allBattleFiles = await fs.readFile(
     process.cwd() + "/src/data/all_battles.json",
     "utf8"
