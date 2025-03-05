@@ -1,9 +1,19 @@
 import { Suspense } from "react";
 import {
-  LetterPlays,
-  LetterPlaysDatabasePostgreSQL,
-} from "@/modules/letter-plays/letter-plays";
-import LetterPlaysByBattleTable from "@/components/custom/letter-plays-by-battle";
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import {
+  ExplanationContextHeader,
+  LetterPlayHeader,
+  RapperHeader,
+} from "@/constants";
+import { Skeleton } from "@/components/ui/skeleton";
+import LetterPlaysByBattleTableSuspense from "./letter-plays-by-battle-table-suspense";
 
 export default async function LetterPlaysByBattlePage({
   params,
@@ -11,29 +21,38 @@ export default async function LetterPlaysByBattlePage({
   params: Promise<{ query: string }>;
 }) {
   const query = (await params).query.trim();
-  const letterPlaysController = new LetterPlays(
-    new LetterPlaysDatabasePostgreSQL()
-  );
-  const letterPlays = await letterPlaysController.getLetterPlaysByVideoID(
-    query
-  );
 
   return (
     <div>
-      <Suspense fallback={<div>Loading</div>}>
-        <div className="pb-4">
-          <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
-            <a
-              href={letterPlays[0].videoURL}
-              target="_blank"
-              rel="noreferrer"
-              className="no-underline hover:underline"
-            >
-              {letterPlays[0].videoName} | {letterPlays[0].date}
-            </a>
-          </h2>
-        </div>
-        <LetterPlaysByBattleTable isLoading={false} letterPlays={letterPlays} />
+      <Suspense
+        fallback={
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[30%]">{LetterPlayHeader}</TableHead>
+                <TableHead className="w-[50%]">
+                  {ExplanationContextHeader}
+                </TableHead>
+                <TableHead className="w-[20%]">{RapperHeader}</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell>
+                  <Skeleton className="h-[20px] rounded-full" />
+                </TableCell>
+                <TableCell>
+                  <Skeleton className="h-[20px] rounded-full" />
+                </TableCell>
+                <TableCell>
+                  <Skeleton className="h-[20px] rounded-full" />
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        }
+      >
+        <LetterPlaysByBattleTableSuspense query={query} />
       </Suspense>
     </div>
   );
