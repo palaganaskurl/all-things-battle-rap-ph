@@ -26,6 +26,7 @@ export default async function Home() {
     process.cwd() + "/src/data/all_battles.json",
     "utf8"
   );
+  console.log(process.cwd() + "/src/data/all_battles.json");
   const battleDataByLeague: BattleDataByLeague = JSON.parse(allBattleFiles);
   const battleLeagues = [
     { name: "FlipTop", ...battleDataByLeague["fliptop"] },
