@@ -1,12 +1,9 @@
-export default function LetterPlayQueryLoading() {
+import { Spinner } from "@/components/ui/spinner";
+
+export default async function LetterPlayQueryLoading() {
   return (
-    <div>
-      <div>
-        <p className="leading-7 not-first:mt-6">
-          Collection of anagram, palindromes, and other letter plays in battle
-          rap.
-        </p>
-      </div>
+    <div className="flex items-center justify-center min-h-[calc(100vh-101px)]">
+      <Spinner size="large" />
     </div>
   );
 }
