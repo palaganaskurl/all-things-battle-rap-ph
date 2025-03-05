@@ -23,7 +23,7 @@ export default async function Home() {
     },
   ];
   const allBattleFiles = await fs.readFile(
-    process.cwd() + "/src/app/data/all_battles.json",
+    process.cwd() + "/src/data/all_battles.json",
     "utf8"
   );
   const battleDataByLeague: BattleDataByLeague = JSON.parse(allBattleFiles);

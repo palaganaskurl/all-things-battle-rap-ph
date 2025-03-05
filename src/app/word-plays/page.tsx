@@ -14,7 +14,7 @@ export default async function WordPlaysPageRoot({
   const emceesFilter = (await searchParams).emcees as string;
 
   const emcees: string[] = JSON.parse(
-    await fs.readFile(process.cwd() + "/src/app/data/emcees.json", "utf8")
+    await fs.readFile(process.cwd() + "/src/data/emcees.json", "utf8")
   );
   const emceesAsComboBoxItems = emcees.map((emcee) => ({
     label: emcee,
