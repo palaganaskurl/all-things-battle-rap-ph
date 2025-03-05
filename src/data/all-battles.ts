@@ -1,4 +1,4 @@
-export default {
+const allBattles = {
   fliptop: {
     all_count: 1238,
     done_count: 101,
@@ -8,3 +8,5 @@ export default {
     done_count: 1,
   },
 };
+
+export default allBattles;

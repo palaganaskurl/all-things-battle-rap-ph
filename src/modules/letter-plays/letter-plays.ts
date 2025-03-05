@@ -1,7 +1,6 @@
 import { tblLetterPlaysInAllThingsBattleRapPH } from "@/db/schema";
 import { BattleLeagueFilters } from "@/types/battles";
 import { and, asc, eq, ilike, inArray } from "drizzle-orm";
-import { drizzle } from "drizzle-orm/node-postgres";
 import { db } from "@/modules/postgres";
 
 export class LetterPlaysDatabasePostgreSQL {

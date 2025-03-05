@@ -1,4 +1,4 @@
-export default [
+const emcees = [
   "Shehyee",
   "Hespero",
   "Poison13",
@@ -79,3 +79,5 @@ export default [
   "Frooz",
   "Goodkidd",
 ];
+
+export default emcees;
