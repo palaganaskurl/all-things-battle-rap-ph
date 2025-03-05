@@ -2,13 +2,13 @@ import { tblLetterPlaysInAllThingsBattleRapPH } from "@/db/schema";
 import { BattleLeagueFilters } from "@/types/battles";
 import { and, asc, eq, ilike, inArray } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/node-postgres";
+import { db } from "@/modules/postgres";
 
 export class LetterPlaysDatabasePostgreSQL {
   constructor() {}
 
   async search(query: string) {
     const ilikeQuery = `%${query}%`;
-    const db = drizzle(process.env.POSTGRES_URL!);
 
     const letterPlays = db
       .select()
@@ -20,8 +20,6 @@ export class LetterPlaysDatabasePostgreSQL {
   }
 
   async getUniqueVideos({ filters }: BattleLeagueFilters) {
-    const db = drizzle(process.env.POSTGRES_URL!);
-
     let videos = db
       .selectDistinct({
         videoID: tblLetterPlaysInAllThingsBattleRapPH.videoID,
@@ -56,8 +54,6 @@ export class LetterPlaysDatabasePostgreSQL {
   }
 
   async getLetterPlaysByVideoID(videoID: string) {
-    const db = drizzle(process.env.POSTGRES_URL!);
-
     const letterPlays = db
       .select()
       .from(tblLetterPlaysInAllThingsBattleRapPH)

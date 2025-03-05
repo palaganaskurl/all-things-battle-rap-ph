@@ -1,15 +1,13 @@
-import "dotenv/config";
-import { drizzle } from "drizzle-orm/node-postgres";
 import { tblWordPlaysInAllThingsBattleRapPH } from "@/db/schema";
 import { and, asc, eq, ilike, inArray } from "drizzle-orm";
 import { BattleLeagueFilters } from "@/types/battles";
+import { db } from "@/modules/postgres";
 
 export class WordPlaysDatabasePostgreSQL {
   constructor() {}
 
   async search(query: string) {
     const ilikeQuery = `%${query}%`;
-    const db = drizzle(process.env.POSTGRES_URL!);
 
     const wordPlays = db
       .select()
@@ -21,10 +19,6 @@ export class WordPlaysDatabasePostgreSQL {
   }
 
   async getUniqueVideos({ filters }: BattleLeagueFilters) {
-    const db = drizzle(process.env.POSTGRES_URL!, {
-      logger: true,
-    });
-
     let videos = db
       .selectDistinct({
         videoID: tblWordPlaysInAllThingsBattleRapPH.videoID,
@@ -59,8 +53,6 @@ export class WordPlaysDatabasePostgreSQL {
   }
 
   async getWordPlaysByVideoID(videoID: string) {
-    const db = drizzle(process.env.POSTGRES_URL!);
-
     const wordPlays = db
       .select()
       .from(tblWordPlaysInAllThingsBattleRapPH)
