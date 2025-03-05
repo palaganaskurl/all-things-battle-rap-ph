@@ -1,9 +1,9 @@
-import LetterPlaysByBattleTable from "@/components/custom/letter-plays-by-battle";
+import { Spinner } from "@/components/ui/spinner";
 
 export default function LetterPlaysByBattleLoading() {
   return (
-    <div>
-      <LetterPlaysByBattleTable isLoading={true} />
+    <div className="flex items-center justify-center min-h-[calc(100vh-101px)]">
+      <Spinner size="large" />
     </div>
   );
 }

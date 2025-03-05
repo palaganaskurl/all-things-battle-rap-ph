@@ -1,8 +1,6 @@
-import { Skeleton } from "@/components/ui/skeleton";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -19,67 +17,15 @@ import { nanoid } from "nanoid";
 import Highlighter from "react-highlight-words";
 import { tblLetterPlaysInAllThingsBattleRapPH } from "@/db/schema";
 
-type LetterPlaysTableProps =
-  | {
-      isLoading: false;
-      letterPlays: (typeof tblLetterPlaysInAllThingsBattleRapPH.$inferSelect)[];
-      query: string;
-    }
-  | { isLoading: true; letterPlays?: never; query?: string };
+type LetterPlaysTableProps = {
+  letterPlays: (typeof tblLetterPlaysInAllThingsBattleRapPH.$inferSelect)[];
+  query: string;
+};
 
 export default function LetterPlaysTable({
-  isLoading,
   letterPlays,
   query,
 }: LetterPlaysTableProps) {
-  const TableCaptionComponent = () => (
-    <TableCaption>
-      All content on this website is curated and owned by{" "}
-      <a href="https://github.com/palaganaskurl">
-        https://github.com/palaganaskurl
-      </a>
-      . All rights reserved.
-    </TableCaption>
-  );
-
-  if (isLoading) {
-    return (
-      <Table>
-        {TableCaptionComponent()}
-        <TableHeader>
-          <TableRow>
-            <TableHead className="w-[15%]">{AnagramPalindromeHeader}</TableHead>
-            <TableHead className="w-[30%]">
-              {ExplanationContextHeader}
-            </TableHead>
-            <TableHead className="w-[25%]">{VideoLinkHeader}</TableHead>
-            <TableHead className="w-[10%]">{RapperHeader}</TableHead>
-            <TableHead className="w-[10%]">{DateHeader}</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          <TableRow>
-            <TableCell>
-              <Skeleton className="w-100 h-[20px] rounded-full" />
-            </TableCell>
-            <TableCell>
-              <Skeleton className="w-100 h-[20px] rounded-full" />
-            </TableCell>
-            <TableCell>
-              <Skeleton className="w-100 h-[20px] rounded-full" />
-            </TableCell>
-            <TableCell>
-              <Skeleton className="w-100 h-[20px] rounded-full" />
-            </TableCell>
-            <TableCell>
-              <Skeleton className="w-100 h-[20px] rounded-full" />
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    );
-  }
-
   const renderRows = () => {
     const rows = letterPlays.map((letterPlay) => {
       return (
@@ -89,10 +35,11 @@ export default function LetterPlaysTable({
               searchWords={[query]}
               autoEscape={true}
               textToHighlight={letterPlay.letterPlay}
+              className="whitespace-pre-line text-balance break-words"
             />
           </TableCell>
           <TableCell>
-            <div className="whitespace-pre text-balance break-words">
+            <div className="whitespace-pre-line text-balance break-words">
               {letterPlay.explanationOrContext}
             </div>
           </TableCell>
@@ -117,7 +64,6 @@ export default function LetterPlaysTable({
 
   return (
     <Table>
-      {TableCaptionComponent()}
       <TableHeader>
         <TableRow>
           <TableHead className="w-[15%]">{AnagramPalindromeHeader}</TableHead>
@@ -127,7 +73,20 @@ export default function LetterPlaysTable({
           <TableHead className="w-[10%]">{DateHeader}</TableHead>
         </TableRow>
       </TableHeader>
-      <TableBody>{renderRows()}</TableBody>
+      {letterPlays && letterPlays.length > 0 ? (
+        <TableBody>{renderRows()}</TableBody>
+      ) : null}
+      {!letterPlays || letterPlays.length === 0 ? (
+        <TableBody>
+          <TableRow>
+            <TableCell className="text-center" colSpan={5}>
+              <p className="text-sm text-muted-foreground my-4">
+                No data found
+              </p>
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      ) : null}
     </Table>
   );
 }
