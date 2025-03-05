@@ -49,19 +49,19 @@ export default async function LetterPlaysPageWithQuery({
               <TableBody>
                 <TableRow>
                   <TableCell>
-                    <Skeleton className="w-100 h-[20px] rounded-full" />
+                    <Skeleton className="h-[20px] rounded-full" />
                   </TableCell>
                   <TableCell>
-                    <Skeleton className="w-100 h-[20px] rounded-full" />
+                    <Skeleton className="h-[20px] rounded-full" />
                   </TableCell>
                   <TableCell>
-                    <Skeleton className="w-100 h-[20px] rounded-full" />
+                    <Skeleton className="h-[20px] rounded-full" />
                   </TableCell>
                   <TableCell>
-                    <Skeleton className="w-100 h-[20px] rounded-full" />
+                    <Skeleton className="h-[20px] rounded-full" />
                   </TableCell>
                   <TableCell>
-                    <Skeleton className="w-100 h-[20px] rounded-full" />
+                    <Skeleton className="h-[20px] rounded-full" />
                   </TableCell>
                 </TableRow>
               </TableBody>
