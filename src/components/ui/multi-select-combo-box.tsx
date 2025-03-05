@@ -15,7 +15,7 @@ export type MultiSelectProps<
   error?: boolean;
 };
 
-export const MultiSelect = forwardRef<any, MultiSelectProps<any>>(
+export const MultiSelect = forwardRef<any, MultiSelectProps<any>>( // eslint-disable-line @typescript-eslint/no-explicit-any
   ({ className, error, ...props }, ref) => {
     return (
       <ReactSelect
