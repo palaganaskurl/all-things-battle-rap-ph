@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/carousel";
 import { AnalyzedBattles } from "@/components/custom/analyzed-battles";
 import { BattleDataByLeague } from "@/types/battles";
-import { promises as fs } from "fs";
+import allBattles from "@/data/all-battles";
 
 export default async function Home() {
   const latestReleases = [
@@ -22,13 +22,7 @@ export default async function Home() {
       thumbnail: "https://img.youtube.com/vi/huSFmwPfu4Y/maxresdefault.jpg",
     },
   ];
-  console.error(process.cwd() + "/src/data/all_battles.json");
-  const allBattleFiles = await fs.readFile(
-    process.cwd() + "/src/data/all_battles.json",
-    "utf8"
-  );
-  console.log(process.cwd() + "/src/data/all_battles.json");
-  const battleDataByLeague: BattleDataByLeague = JSON.parse(allBattleFiles);
+  const battleDataByLeague: BattleDataByLeague = allBattles;
   const battleLeagues = [
     { name: "FlipTop", ...battleDataByLeague["fliptop"] },
     { name: "Motus", ...battleDataByLeague["motus"] },

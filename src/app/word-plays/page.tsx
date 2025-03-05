@@ -1,9 +1,9 @@
 import WordPlaySearch from "@/components/custom/word-play-search";
-import { promises as fs } from "fs";
 import BattleFilters from "@/components/custom/battle-filters";
 import { Suspense } from "react";
 import WordPlayVideoBattleCards from "./video-battle-cards";
 import { SkeletonCard } from "@/components/custom/skeleton-card";
+import emcees from "@/data/emcees";
 
 export default async function WordPlaysPageRoot({
   searchParams,
@@ -13,9 +13,6 @@ export default async function WordPlaysPageRoot({
   const battleLeaguesFilter = (await searchParams).battleLeagues as string;
   const emceesFilter = (await searchParams).emcees as string;
 
-  const emcees: string[] = JSON.parse(
-    await fs.readFile(process.cwd() + "/src/data/emcees.json", "utf8")
-  );
   const emceesAsComboBoxItems = emcees.map((emcee) => ({
     label: emcee,
     value: emcee,

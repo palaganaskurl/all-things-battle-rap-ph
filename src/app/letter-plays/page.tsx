@@ -3,7 +3,7 @@ import LetterPlayVideoBattleCards from "./video-battle-cards";
 import { SkeletonCard } from "@/components/custom/skeleton-card";
 import { Suspense } from "react";
 import BattleFilters from "@/components/custom/battle-filters";
-import { promises as fs } from "fs";
+import emcees from "@/data/emcees";
 
 export default async function LetterPlaysPageRoot({
   searchParams,
@@ -13,9 +13,6 @@ export default async function LetterPlaysPageRoot({
   const battleLeaguesFilter = (await searchParams).battleLeagues as string;
   const emceesFilter = (await searchParams).emcees as string;
 
-  const emcees: string[] = JSON.parse(
-    await fs.readFile(process.cwd() + "/src/data/emcees.json", "utf8")
-  );
   const emceesAsComboBoxItems = emcees.map((emcee) => ({
     label: emcee,
     value: emcee,
