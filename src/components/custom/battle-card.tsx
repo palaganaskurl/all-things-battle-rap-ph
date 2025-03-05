@@ -21,20 +21,24 @@ export default function BattleCard({
   }, [imageSrc]);
 
   return (
-    <Link href={`${redirectPrefix}/${videoID}`} className="flex flex-col">
-      <Card className="flex flex-col overflow-hidden transition-all ease-in-out duration-300 hover:shadow-xl hover:cursor-pointer">
-        <CardHeader className="grow">
-          <CardTitle>{videoName}</CardTitle>
+    <Link
+      href={`${redirectPrefix}/${videoID}`}
+      className="flex flex-col h-full"
+    >
+      <Card className="flex flex-col h-full overflow-hidden transition-all ease-in-out duration-300 hover:shadow-xl hover:cursor-pointer">
+        <CardHeader className="h-[50px] flex items-center justify-center pt-8">
+          <CardTitle className="w-full text-center">{videoName}</CardTitle>
         </CardHeader>
-        <CardContent className="grow flex items-end">
-          <AspectRatio ratio={16 / 9}>
+        <CardContent className="flex-grow flex items-center justify-center px-4 pt-1 pb-4">
+          <AspectRatio ratio={16 / 9} className="w-full">
             <Image
               src={cannotGetThumbnail ? fallbackSrc : imageSrc}
               alt="Image"
-              className="rounded-md object-cover"
+              className="rounded-md object-contain" // Changed from object-cover to object-contain
               fill
               style={{
                 objectFit: "contain",
+                objectPosition: "center", // Ensure center positioning
               }}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               onError={() => {
