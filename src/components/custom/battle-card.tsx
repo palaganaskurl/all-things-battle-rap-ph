@@ -5,7 +5,7 @@ import Image from "next/image";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { BattlePreview } from "@/app/types/battles";
+import { BattlePreview } from "@/types/battles";
 import { useState, useEffect } from "react";
 
 export default function BattleCard({

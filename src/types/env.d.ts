@@ -1,5 +1,5 @@
 declare namespace NodeJS {
   interface ProcessEnv {
-    POSTGRES_URL: string;
+    DATABASE_URL: string;
   }
 }

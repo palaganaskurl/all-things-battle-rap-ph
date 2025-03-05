@@ -1,4 +1,3 @@
-import { WordPlay } from "@/app/types/word-play";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
   Table,
@@ -15,9 +14,13 @@ import {
   RapperHeader,
   WordPlayHeader,
 } from "@/constants";
+import { tblWordPlaysInAllThingsBattleRapPH } from "@/db/schema";
 
 type WordPlaysByBattleTableProps =
-  | { isLoading: false; wordPlays: WordPlay[] }
+  | {
+      isLoading: false;
+      wordPlays: (typeof tblWordPlaysInAllThingsBattleRapPH.$inferSelect)[];
+    }
   | { isLoading: true; wordPlays?: never };
 
 export default function WordPlaysByBattleTable({

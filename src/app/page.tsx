@@ -8,7 +8,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { AnalyzedBattles } from "@/components/custom/analyzed-battles";
-import { BattleDataByLeague } from "@/app/types/battles";
+import { BattleDataByLeague } from "@/types/battles";
 import { promises as fs } from "fs";
 
 export default async function Home() {

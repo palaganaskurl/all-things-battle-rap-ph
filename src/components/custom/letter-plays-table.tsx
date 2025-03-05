@@ -1,4 +1,3 @@
-import { LetterPlay } from "@/app/types/letter-play";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
   Table,
@@ -18,9 +17,14 @@ import {
 } from "@/constants";
 import { nanoid } from "nanoid";
 import Highlighter from "react-highlight-words";
+import { tblLetterPlaysInAllThingsBattleRapPH } from "@/db/schema";
 
 type LetterPlaysTableProps =
-  | { isLoading: false; letterPlays: LetterPlay[]; query: string }
+  | {
+      isLoading: false;
+      letterPlays: (typeof tblLetterPlaysInAllThingsBattleRapPH.$inferSelect)[];
+      query: string;
+    }
   | { isLoading: true; letterPlays?: never; query?: string };
 
 export default function LetterPlaysTable({

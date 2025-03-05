@@ -1,4 +1,3 @@
-import { WordPlay } from "@/app/types/word-play";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
   Table,
@@ -18,9 +17,14 @@ import {
   VideoLinkHeader,
   WordPlayHeader,
 } from "@/constants";
+import { tblWordPlaysInAllThingsBattleRapPH } from "@/db/schema";
 
 type WordPlaysTableProps =
-  | { isLoading: false; wordPlays: WordPlay[]; query: string }
+  | {
+      isLoading: false;
+      wordPlays: (typeof tblWordPlaysInAllThingsBattleRapPH.$inferSelect)[];
+      query: string;
+    }
   | { isLoading: true; wordPlays?: never; query?: string };
 
 export default function WordPlaysTable({

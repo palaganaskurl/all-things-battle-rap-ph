@@ -14,10 +14,13 @@ import {
   RapperHeader,
   WordPlayHeader,
 } from "@/constants";
-import { LetterPlay } from "@/app/types/letter-play";
+import { tblLetterPlaysInAllThingsBattleRapPH } from "@/db/schema";
 
 type LetterPlaysByBattleTableProps =
-  | { isLoading: false; letterPlays: LetterPlay[] }
+  | {
+      isLoading: false;
+      letterPlays: (typeof tblLetterPlaysInAllThingsBattleRapPH.$inferSelect)[];
+    }
   | { isLoading: true; letterPlays?: never };
 
 export default function LetterPlaysByBattleTable({

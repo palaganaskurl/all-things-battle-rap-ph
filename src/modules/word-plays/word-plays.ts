@@ -1,68 +1,92 @@
-import { BattlePreview } from "@/app/types/battles";
-import { WordPlay } from "@/app/types/word-play";
-import sql from "@/modules/database/postgres";
+import "dotenv/config";
+import { drizzle } from "drizzle-orm/node-postgres";
+import { tblWordPlaysInAllThingsBattleRapPH } from "@/db/schema";
+import { and, asc, eq, ilike, inArray } from "drizzle-orm";
+import { BattleLeagueFilters } from "@/types/battles";
 
-abstract class WordPlaysDatabase {
-  abstract search(query: string): Promise<WordPlay[]>;
-  abstract getUniqueVideos(): Promise<BattlePreview[]>;
-  abstract getWordPlaysByVideoID(videoID: string): Promise<WordPlay[]>;
-}
+export class WordPlaysDatabasePostgreSQL {
+  constructor() {}
 
-export class WordPlaysDatabasePostgreSQL extends WordPlaysDatabase {
-  constructor() {
-    super();
+  async search(query: string) {
+    const ilikeQuery = `%${query}%`;
+    const db = drizzle(process.env.DATABASE_URL!);
+
+    const wordPlays = db
+      .select()
+      .from(tblWordPlaysInAllThingsBattleRapPH)
+      .where(ilike(tblWordPlaysInAllThingsBattleRapPH.wordPlay, ilikeQuery))
+      .orderBy(asc(tblWordPlaysInAllThingsBattleRapPH.dateTimestamp));
+
+    return await wordPlays;
   }
 
-  async search(query: string): Promise<WordPlay[]> {
-    const ilike = `%${query}%`;
-    const wordPlays = (await sql`
-        SELECT *
-        FROM "all-things-battle-rap-ph".tbl_word_plays AS wp
-        WHERE wp."wordPlay" ILIKE ${ilike}
-        ORDER BY wp."dateTimestamp" ASC
-    `) as WordPlay[];
+  async getUniqueVideos({ filters }: BattleLeagueFilters) {
+    const db = drizzle(process.env.DATABASE_URL!, {
+      logger: true,
+    });
 
-    return wordPlays;
+    let videos = db
+      .selectDistinct({
+        videoID: tblWordPlaysInAllThingsBattleRapPH.videoID,
+        videoName: tblWordPlaysInAllThingsBattleRapPH.videoName,
+        dateTimestamp: tblWordPlaysInAllThingsBattleRapPH.dateTimestamp,
+      })
+      .from(tblWordPlaysInAllThingsBattleRapPH)
+      .$dynamic();
+
+    const inArrays = [];
+
+    if (filters.battleLeagues && filters.battleLeagues.length > 0) {
+      inArrays.push(
+        inArray(
+          tblWordPlaysInAllThingsBattleRapPH.battleLeague,
+          filters.battleLeagues
+        )
+      );
+    }
+
+    if (filters.emcees && filters.emcees.length > 0) {
+      inArrays.push(
+        inArray(tblWordPlaysInAllThingsBattleRapPH.rapper, filters.emcees)
+      );
+    }
+
+    videos = videos
+      .where(and(...inArrays))
+      .orderBy(asc(tblWordPlaysInAllThingsBattleRapPH.dateTimestamp));
+
+    return await videos;
   }
 
-  async getUniqueVideos(): Promise<BattlePreview[]> {
-    const videos = (await sql`
-        SELECT DISTINCT wp."videoID", wp."videoName", wp."dateTimestamp"
-        FROM "all-things-battle-rap-ph".tbl_word_plays AS wp
-        ORDER BY wp."dateTimestamp" ASC
-    `) as BattlePreview[];
+  async getWordPlaysByVideoID(videoID: string) {
+    const db = drizzle(process.env.DATABASE_URL!);
 
-    return videos;
-  }
+    const wordPlays = db
+      .select()
+      .from(tblWordPlaysInAllThingsBattleRapPH)
+      .where(eq(tblWordPlaysInAllThingsBattleRapPH.videoID, videoID))
+      .orderBy(asc(tblWordPlaysInAllThingsBattleRapPH.timestampInSeconds));
 
-  async getWordPlaysByVideoID(videoID: string): Promise<WordPlay[]> {
-    const wordPlays = (await sql`
-        SELECT *
-        FROM "all-things-battle-rap-ph".tbl_word_plays AS wp
-        WHERE wp."videoID" = ${videoID}
-        ORDER BY wp."timestampInSeconds" ASC
-    `) as WordPlay[];
-
-    return wordPlays;
+    return await wordPlays;
   }
 }
 
 export class WordPlays {
-  #database: WordPlaysDatabase;
+  #database: WordPlaysDatabasePostgreSQL;
 
-  constructor(database: WordPlaysDatabase) {
+  constructor(database: WordPlaysDatabasePostgreSQL) {
     this.#database = database;
   }
 
-  async searchWordPlays(query: string): Promise<WordPlay[]> {
+  async searchWordPlays(query: string) {
     return await this.#database.search(query);
   }
 
-  async getUniqueVideos(): Promise<BattlePreview[]> {
-    return await this.#database.getUniqueVideos();
+  async getUniqueVideos({ filters }: BattleLeagueFilters) {
+    return await this.#database.getUniqueVideos({ filters });
   }
 
-  async getWordPlaysByVideoID(videoID: string): Promise<WordPlay[]> {
+  async getWordPlaysByVideoID(videoID: string) {
     return await this.#database.getWordPlaysByVideoID(videoID);
   }
 }
