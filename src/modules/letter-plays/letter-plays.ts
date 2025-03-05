@@ -8,7 +8,7 @@ export class LetterPlaysDatabasePostgreSQL {
 
   async search(query: string) {
     const ilikeQuery = `%${query}%`;
-    const db = drizzle(process.env.DATABASE_URL!);
+    const db = drizzle(process.env.POSTGRES_URL!);
 
     const letterPlays = db
       .select()
@@ -20,7 +20,7 @@ export class LetterPlaysDatabasePostgreSQL {
   }
 
   async getUniqueVideos({ filters }: BattleLeagueFilters) {
-    const db = drizzle(process.env.DATABASE_URL!);
+    const db = drizzle(process.env.POSTGRES_URL!);
 
     let videos = db
       .selectDistinct({
@@ -56,7 +56,7 @@ export class LetterPlaysDatabasePostgreSQL {
   }
 
   async getLetterPlaysByVideoID(videoID: string) {
-    const db = drizzle(process.env.DATABASE_URL!);
+    const db = drizzle(process.env.POSTGRES_URL!);
 
     const letterPlays = db
       .select()

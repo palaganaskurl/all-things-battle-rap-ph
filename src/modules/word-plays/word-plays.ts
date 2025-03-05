@@ -9,7 +9,7 @@ export class WordPlaysDatabasePostgreSQL {
 
   async search(query: string) {
     const ilikeQuery = `%${query}%`;
-    const db = drizzle(process.env.DATABASE_URL!);
+    const db = drizzle(process.env.POSTGRES_URL!);
 
     const wordPlays = db
       .select()
@@ -21,7 +21,7 @@ export class WordPlaysDatabasePostgreSQL {
   }
 
   async getUniqueVideos({ filters }: BattleLeagueFilters) {
-    const db = drizzle(process.env.DATABASE_URL!, {
+    const db = drizzle(process.env.POSTGRES_URL!, {
       logger: true,
     });
 
@@ -59,7 +59,7 @@ export class WordPlaysDatabasePostgreSQL {
   }
 
   async getWordPlaysByVideoID(videoID: string) {
-    const db = drizzle(process.env.DATABASE_URL!);
+    const db = drizzle(process.env.POSTGRES_URL!);
 
     const wordPlays = db
       .select()
