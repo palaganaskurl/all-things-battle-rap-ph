@@ -1,9 +1,5 @@
 import WordPlaySearch from "@/components/custom/word-play-search";
 import { Suspense } from "react";
-import {
-  WordPlays,
-  WordPlaysDatabasePostgreSQL,
-} from "@/modules/word-plays/word-plays";
 import WordPlaysTableSuspense from "./word-plays-table-suspense";
 import {
   Table,
@@ -29,8 +25,6 @@ export default async function WordPlaysPageWithQuery({
   params: Promise<{ query: string }>;
 }) {
   const query = (await params).query.trim();
-  const wordPlaysController = new WordPlays(new WordPlaysDatabasePostgreSQL());
-  const wordPlays = await wordPlaysController.searchWordPlays(query);
 
   return (
     <div className="min-h-[calc(100vh-101px)] flex flex-col">

@@ -1,12 +1,9 @@
-export default function WordPlayQueryLoading() {
+import { Spinner } from "@/components/ui/spinner";
+
+export default async function WordPlayQueryLoading() {
   return (
-    <div>
-      <div>
-        <p className="leading-7 not-first:mt-6">
-          Collection of double entendres, syllable plays, homophones, webbings,
-          puns, name plays, and other word plays in battle rap. x
-        </p>
-      </div>
+    <div className="flex items-center justify-center min-h-[calc(100vh-101px)]">
+      <Spinner size="large" />
     </div>
   );
 }
