@@ -16,7 +16,7 @@ export default function WordPlaySearch({ query }: { query: string }) {
       <Input
         value={searchQuery}
         type="search"
-        placeholder="Search Wordplays"
+        placeholder="Search Word Plays"
         onChange={(e) => {
           setSearchQuery(e.target.value);
         }}

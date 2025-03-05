@@ -14,7 +14,9 @@ export default async function LetterPlaysByBattlePage({
   const letterPlaysController = new LetterPlays(
     new LetterPlaysDatabasePostgreSQL()
   );
-  const letterPlays = await letterPlaysController.getWordPlaysByVideoID(query);
+  const letterPlays = await letterPlaysController.getLetterPlaysByVideoID(
+    query
+  );
 
   return (
     <div>

@@ -14,3 +14,10 @@ export type BattlePreview = {
   videoName: string;
   redirectPrefix: string;
 };
+
+export type BattleLeagueFilters = {
+  filters: {
+    battleLeagues?: string[];
+    emcees?: string[];
+  };
+};

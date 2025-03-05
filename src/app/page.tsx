@@ -8,8 +8,8 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { AnalyzedBattles } from "@/components/custom/analyzed-battles";
-import { BattleDataByLeague } from "@/app/types/battles";
-import { promises as fs } from "fs";
+import { BattleDataByLeague } from "@/types/battles";
+import allBattles from "@/data/all-battles";
 
 export default async function Home() {
   const latestReleases = [
@@ -22,20 +22,16 @@ export default async function Home() {
       thumbnail: "https://img.youtube.com/vi/huSFmwPfu4Y/maxresdefault.jpg",
     },
   ];
-  const allBattleFiles = await fs.readFile(
-    process.cwd() + "/src/app/data/all_battles.json",
-    "utf8"
-  );
-  const battleDataByLeague: BattleDataByLeague = JSON.parse(allBattleFiles);
+  const battleDataByLeague: BattleDataByLeague = allBattles;
   const battleLeagues = [
     { name: "FlipTop", ...battleDataByLeague["fliptop"] },
-    { name: "Motus Battle League", ...battleDataByLeague["motus"] },
-    { name: "Sunugan Rap Battle League", done_count: 0, all_count: 0 },
-    { name: "Pulo Battle League", done_count: 0, all_count: 0 },
+    { name: "Motus", ...battleDataByLeague["motus"] },
+    { name: "Sunugan", done_count: 0, all_count: 0 },
+    { name: "Pulo", done_count: 0, all_count: 0 },
   ];
 
   return (
-    <div className="container mx-auto gap-4">
+    <div className="container gap-4">
       <section className="flex flex-col gap-4">
         <div className="flex justify-center mt-4">
           <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-2xl">
