@@ -1,7 +1,7 @@
 const allBattles = {
   fliptop: {
     all_count: 1238,
-    done_count: 101,
+    done_count: 112,
   },
   motus: {
     all_count: 437,
