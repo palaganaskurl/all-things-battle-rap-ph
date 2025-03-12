@@ -61,7 +61,7 @@ export default async function LetterPlaysPageRoot({
               : []
           }
         />
-        {/* <Suspense
+        <Suspense
           key={JSON.stringify({
             battleLeaguesFilter,
             emceesFilter,
@@ -87,7 +87,7 @@ export default async function LetterPlaysPageRoot({
             emceesFilter={emceesFilter}
             battleLeaguesFilter={battleLeaguesFilter}
           />
-        </Suspense> */}
+        </Suspense>
       </div>
     </div>
   );
