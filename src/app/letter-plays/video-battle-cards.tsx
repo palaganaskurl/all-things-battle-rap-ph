@@ -1,4 +1,5 @@
 import BattleCard from "@/components/custom/battle-card";
+import { BattlesPerPage } from "@/constants";
 import {
   LetterPlays,
   LetterPlaysDatabasePostgreSQL,
@@ -7,9 +8,13 @@ import {
 export default async function LetterPlayVideoBattleCards({
   battleLeaguesFilter,
   emceesFilter,
+  currentPage = 1,
+  perPage = BattlesPerPage,
 }: {
   battleLeaguesFilter: string | undefined;
   emceesFilter: string | undefined;
+  currentPage?: number;
+  perPage?: number;
 }) {
   const letterPlaysController = new LetterPlays(
     new LetterPlaysDatabasePostgreSQL()
@@ -18,6 +23,10 @@ export default async function LetterPlayVideoBattleCards({
     filters: {
       battleLeagues: battleLeaguesFilter ? battleLeaguesFilter.split(",") : [],
       emcees: emceesFilter ? emceesFilter.split(",") : [],
+    },
+    pagination: {
+      page: currentPage,
+      perPage: perPage,
     },
   });
 

@@ -1,4 +1,5 @@
 import BattleCard from "@/components/custom/battle-card";
+import { BattlesPerPage } from "@/constants";
 import {
   WordPlays,
   WordPlaysDatabasePostgreSQL,
@@ -7,20 +8,28 @@ import {
 export default async function WordPlayVideoBattleCards({
   battleLeaguesFilter,
   emceesFilter,
+  currentPage = 1,
+  perPage = BattlesPerPage,
 }: {
-  battleLeaguesFilter: string | undefined;
-  emceesFilter: string | undefined;
+  battleLeaguesFilter?: string;
+  emceesFilter?: string;
+  currentPage: number;
+  perPage: number;
 }) {
   const wordPlaysController = new WordPlays(new WordPlaysDatabasePostgreSQL());
-  const wordPlays = await wordPlaysController.getUniqueVideos({
+  const videos = await wordPlaysController.getUniqueVideos({
     filters: {
       battleLeagues: battleLeaguesFilter ? battleLeaguesFilter.split(",") : [],
       emcees: emceesFilter ? emceesFilter.split(",") : [],
     },
+    pagination: {
+      page: currentPage,
+      perPage: perPage,
+    },
   });
 
   const renderBattleCards = () => {
-    return wordPlays.map((battle, index) => (
+    return videos.map((battle, index) => (
       <BattleCard
         key={`battle-${index}`}
         videoName={battle.videoName}

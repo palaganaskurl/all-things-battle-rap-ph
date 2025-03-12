@@ -4,6 +4,8 @@ import { Suspense } from "react";
 import WordPlayVideoBattleCards from "./video-battle-cards";
 import { SkeletonCard } from "@/components/custom/skeleton-card";
 import emcees from "@/data/emcees";
+import BattlesPagination from "@/components/custom/battles-pagination";
+import { BattlesPerPage } from "@/constants";
 
 export default async function WordPlaysPageRoot({
   searchParams,
@@ -12,6 +14,7 @@ export default async function WordPlaysPageRoot({
 }) {
   const battleLeaguesFilter = (await searchParams).battleLeagues as string;
   const emceesFilter = (await searchParams).emcees as string;
+  const currentPage = parseInt((await searchParams).page as string) || 1;
 
   const emceesAsComboBoxItems = emcees.map((emcee) => ({
     label: emcee,
@@ -62,6 +65,7 @@ export default async function WordPlaysPageRoot({
           key={JSON.stringify({
             battleLeaguesFilter,
             emceesFilter,
+            currentPage,
           })}
           fallback={
             <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
@@ -74,6 +78,14 @@ export default async function WordPlaysPageRoot({
           <WordPlayVideoBattleCards
             battleLeaguesFilter={battleLeaguesFilter}
             emceesFilter={emceesFilter}
+            currentPage={currentPage}
+            perPage={BattlesPerPage}
+          />
+          <BattlesPagination
+            urlPrefix="/word-plays"
+            currentPage={currentPage}
+            emceesFilter={emceesFilter}
+            battleLeaguesFilter={battleLeaguesFilter}
           />
         </Suspense>
       </div>

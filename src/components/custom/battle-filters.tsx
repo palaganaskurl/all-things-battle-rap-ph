@@ -42,6 +42,7 @@ export default function BattleFilters({
             setSelectedBattleLeagues(selectedItems.map((item) => item.value));
           }}
           defaultValue={defaultBattleLeagues}
+          instanceId="battle-league-options"
         />
       </div>
       <div className="md:w-[50%] w-full">
@@ -52,6 +53,7 @@ export default function BattleFilters({
             setSelectedEmcees(selectedItems.map((item) => item.value));
           }}
           defaultValue={defaultEmcees}
+          instanceId="emcee-options"
         />
       </div>
       <div className="md:w-[15%] w-full">
@@ -65,7 +67,7 @@ export default function BattleFilters({
             );
           }}
         >
-          <RefreshCw /> Refresh
+          <RefreshCw /> Filter Battles
         </Button>
       </div>
     </div>

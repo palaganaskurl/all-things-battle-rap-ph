@@ -20,4 +20,8 @@ export type BattleLeagueFilters = {
     battleLeagues?: string[];
     emcees?: string[];
   };
+  pagination?: {
+    page: number;
+    perPage: number;
+  };
 };

@@ -1,7 +1,8 @@
 import { tblLetterPlaysInAllThingsBattleRapPH } from "@/db/schema";
 import { BattleLeagueFilters } from "@/types/battles";
-import { and, asc, eq, ilike, inArray } from "drizzle-orm";
+import { and, asc, eq, ilike, inArray, sql } from "drizzle-orm";
 import { db } from "@/modules/postgres";
+import { BattlesPerPage } from "@/constants";
 
 export class LetterPlaysDatabasePostgreSQL {
   constructor() {}
@@ -18,7 +19,7 @@ export class LetterPlaysDatabasePostgreSQL {
     return await letterPlays;
   }
 
-  async getUniqueVideos({ filters }: BattleLeagueFilters) {
+  async getUniqueVideos({ filters, pagination }: BattleLeagueFilters) {
     let videos = db
       .selectDistinct({
         videoID: tblLetterPlaysInAllThingsBattleRapPH.videoID,
@@ -47,9 +48,43 @@ export class LetterPlaysDatabasePostgreSQL {
 
     videos = videos
       .where(and(...inArrays))
+      .limit(pagination?.perPage ?? BattlesPerPage)
+      .offset(
+        ((pagination?.page ?? 1) - 1) * (pagination?.perPage ?? BattlesPerPage)
+      )
       .orderBy(asc(tblLetterPlaysInAllThingsBattleRapPH.dateTimestamp));
 
     return await videos;
+  }
+
+  async getUniqueVideosCount({ filters }: BattleLeagueFilters) {
+    let videosTotalCount = db
+      .selectDistinct({
+        count: sql<number>`count(distinct ${tblLetterPlaysInAllThingsBattleRapPH.videoID})`,
+      })
+      .from(tblLetterPlaysInAllThingsBattleRapPH)
+      .$dynamic();
+
+    const inArrays = [];
+
+    if (filters.battleLeagues && filters.battleLeagues.length > 0) {
+      inArrays.push(
+        inArray(
+          tblLetterPlaysInAllThingsBattleRapPH.battleLeague,
+          filters.battleLeagues
+        )
+      );
+    }
+
+    if (filters.emcees && filters.emcees.length > 0) {
+      inArrays.push(
+        inArray(tblLetterPlaysInAllThingsBattleRapPH.rapper, filters.emcees)
+      );
+    }
+
+    videosTotalCount = videosTotalCount.where(and(...inArrays));
+
+    return (await videosTotalCount)[0].count;
   }
 
   async getLetterPlaysByVideoID(videoID: string) {
@@ -74,8 +109,12 @@ export class LetterPlays {
     return await this.#database.search(query);
   }
 
-  async getUniqueVideos({ filters }: BattleLeagueFilters) {
-    return await this.#database.getUniqueVideos({ filters });
+  async getUniqueVideos({ filters, pagination }: BattleLeagueFilters) {
+    return await this.#database.getUniqueVideos({ filters, pagination });
+  }
+
+  async getUniqueVideosCount({ filters }: BattleLeagueFilters) {
+    return await this.#database.getUniqueVideosCount({ filters });
   }
 
   async getLetterPlaysByVideoID(videoID: string) {

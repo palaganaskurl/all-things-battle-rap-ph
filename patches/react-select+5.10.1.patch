@@ -1,0 +1,16 @@
+diff --git a/node_modules/react-select/dist/Select-aab027f3.esm.js b/node_modules/react-select/dist/Select-aab027f3.esm.js
+index fd5726b..e935505 100644
+--- a/node_modules/react-select/dist/Select-aab027f3.esm.js
++++ b/node_modules/react-select/dist/Select-aab027f3.esm.js
+@@ -2127,7 +2127,10 @@ var Select = /*#__PURE__*/function (_Component) {
+         'aria-labelledby': this.props['aria-labelledby'],
+         'aria-required': required,
+         role: 'combobox',
+-        'aria-activedescendant': this.isAppleDevice ? undefined : this.state.focusedOptionId || ''
++        'aria-activedescendant':
++          this.state.componentHasMounted && this.isAppleDevice
++            ? undefined
++            : this.state.focusedOptionId || '',
+       }, menuIsOpen && {
+         'aria-controls': this.getElementId('listbox')
+       }), !isSearchable && {
