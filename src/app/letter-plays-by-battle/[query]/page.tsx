@@ -24,8 +24,8 @@ export default async function LetterPlaysByBattlePage({
   const query = (await params).query.trim();
 
   return (
-    <div>
-      <div className="min-h-[calc(100vh-153px)] flex flex-col">
+    <>
+      <div className="md:min-h-[calc(100vh-153px)] min-h-[calc(100vh-210px)] flex flex-col">
         <Suspense
           fallback={
             <Table>
@@ -60,6 +60,6 @@ export default async function LetterPlaysByBattlePage({
       <div>
         <TableFooter />
       </div>
-    </div>
+    </>
   );
 }

@@ -27,7 +27,7 @@ export default async function LetterPlaysPageWithQuery({
   const query = (await params).query.trim();
 
   return (
-    <div className="min-h-[calc(100vh-101px)] flex flex-col">
+    <div className="md:min-h-[calc(100vh-101px)] min-h-[calc(100vh-137px)] flex flex-col">
       <div>
         <LetterPlaySearch query={query} />
         <Suspense

@@ -25,9 +25,8 @@ export default async function WordPlaysPageWithQuery({
   params: Promise<{ query: string }>;
 }) {
   const query = decodeURI((await params).query.trim());
-
   return (
-    <div className="min-h-[calc(100vh-101px)] flex flex-col">
+    <div className="md:min-h-[calc(100vh-101px)] min-h-[calc(100vh-137px)] flex flex-col">
       <div>
         <WordPlaySearch query={query} />
         <Suspense
