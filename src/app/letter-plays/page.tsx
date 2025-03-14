@@ -16,7 +16,7 @@ export default async function LetterPlaysPageRoot({
   const emceesFilter = (await searchParams).emcees as string;
   const currentPage = parseInt((await searchParams).page as string) || 1;
 
-  const emceesAsComboBoxItems = emcees.map((emcee) => ({
+  const emceesAsComboBoxItems = emcees.letterPlayEmcees.map((emcee) => ({
     label: emcee,
     value: emcee,
   }));
