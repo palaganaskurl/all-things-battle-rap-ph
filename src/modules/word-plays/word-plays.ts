@@ -52,7 +52,10 @@ export class WordPlaysDatabasePostgreSQL {
       .offset(
         ((pagination?.page ?? 1) - 1) * (pagination?.perPage ?? BattlesPerPage)
       )
-      .orderBy(asc(tblWordPlaysInAllThingsBattleRapPH.dateTimestamp));
+      .orderBy(
+        asc(tblWordPlaysInAllThingsBattleRapPH.dateTimestamp),
+        asc(tblWordPlaysInAllThingsBattleRapPH.videoName)
+      );
 
     return await videos;
   }
