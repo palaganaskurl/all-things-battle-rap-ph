@@ -5,7 +5,7 @@ import { Suspense } from "react";
 import BattleFilters from "@/components/custom/battle-filters";
 import emcees from "@/data/emcees";
 import BattlesPagination from "@/components/custom/battles-pagination";
-import { BattlesPerPage } from "@/constants";
+import { battleLeaguesAsComboBoxItems, BattlesPerPage } from "@/constants";
 
 export default async function LetterPlaysPageRoot({
   searchParams,
@@ -20,11 +20,6 @@ export default async function LetterPlaysPageRoot({
     label: emcee,
     value: emcee,
   }));
-
-  const battleLeaguesAsComboBoxItems = [
-    { label: "FlipTop", value: "FlipTop" },
-    { label: "Motus", value: "Motus" },
-  ];
 
   return (
     <div>

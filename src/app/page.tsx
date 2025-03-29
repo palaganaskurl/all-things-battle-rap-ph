@@ -25,8 +25,8 @@ export default async function Home() {
   const battleDataByLeague: BattleDataByLeague = allBattles;
   const battleLeagues = [
     { name: "FlipTop", ...battleDataByLeague["fliptop"] },
+    { name: "Sunugan", ...battleDataByLeague["sunugan"] },
     { name: "Motus", ...battleDataByLeague["motus"] },
-    { name: "Sunugan", done_count: 0, all_count: 0 },
     { name: "Pulo", done_count: 0, all_count: 0 },
   ];
 

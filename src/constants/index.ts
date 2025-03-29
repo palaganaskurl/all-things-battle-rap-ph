@@ -7,3 +7,9 @@ export const DateHeader = "Date";
 export const AnagramPalindromeHeader = "Anagram / Palindrome";
 export const TimestampHeader = "Timestamp";
 export const BattlesPerPage = 12;
+
+export const battleLeaguesAsComboBoxItems = [
+  { label: "FlipTop", value: "FlipTop" },
+  { label: "Sunugan", value: "Sunugan" },
+  { label: "Motus", value: "Motus" },
+];

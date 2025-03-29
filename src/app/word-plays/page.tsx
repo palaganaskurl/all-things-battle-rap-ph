@@ -5,7 +5,7 @@ import WordPlayVideoBattleCards from "./video-battle-cards";
 import { SkeletonCard } from "@/components/custom/skeleton-card";
 import emcees from "@/data/emcees";
 import BattlesPagination from "@/components/custom/battles-pagination";
-import { BattlesPerPage } from "@/constants";
+import { battleLeaguesAsComboBoxItems, BattlesPerPage } from "@/constants";
 
 export default async function WordPlaysPageRoot({
   searchParams,
@@ -20,11 +20,6 @@ export default async function WordPlaysPageRoot({
     label: emcee,
     value: emcee,
   }));
-
-  const battleLeaguesAsComboBoxItems = [
-    { label: "FlipTop", value: "FlipTop" },
-    { label: "Motus", value: "Motus" },
-  ];
 
   return (
     <div>

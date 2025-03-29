@@ -118,6 +118,7 @@ const emcees = {
     "Tatz Maven",
     "Mhot / Sur Henyo",
     "Lhipkram / Jonas",
+    "Don Pao",
   ],
   letterPlayEmcees: [
     "Poison13",

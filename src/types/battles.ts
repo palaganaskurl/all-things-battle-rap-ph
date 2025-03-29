@@ -1,4 +1,4 @@
-export type BattleLeagues = "fliptop" | "motus";
+export type BattleLeagues = "fliptop" | "motus" | "sunugan";
 
 export type AnalyzedBattle = {
   done_count: number;
