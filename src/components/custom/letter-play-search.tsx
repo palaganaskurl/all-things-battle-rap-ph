@@ -16,7 +16,7 @@ export default function LetterPlaySearch({ query }: { query: string }) {
       <Input
         value={searchQuery}
         type="search"
-        placeholder="Search Anagrams / Palindromes"
+        placeholder="Search Letter Plays"
         onChange={(e) => {
           setSearchQuery(e.target.value);
         }}

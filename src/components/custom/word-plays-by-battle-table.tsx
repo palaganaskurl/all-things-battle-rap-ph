@@ -10,6 +10,7 @@ import { nanoid } from "nanoid";
 import {
   ExplanationContextHeader,
   RapperHeader,
+  TimestampHeader,
   WordPlayHeader,
 } from "@/constants";
 import { tblWordPlaysInAllThingsBattleRapPH } from "@/db/schema";
@@ -33,6 +34,7 @@ export default function WordPlaysByBattleTable({
               {wordPlay.explanationOrContext}
             </div>
           </TableCell>
+          <TableCell>{wordPlay.timestamp}</TableCell>
           <TableCell>{wordPlay.rapper}</TableCell>
         </TableRow>
       );
@@ -46,7 +48,8 @@ export default function WordPlaysByBattleTable({
       <TableHeader>
         <TableRow>
           <TableHead className="w-[30%]">{WordPlayHeader}</TableHead>
-          <TableHead className="w-[50%]">{ExplanationContextHeader}</TableHead>
+          <TableHead className="w-[40%]">{ExplanationContextHeader}</TableHead>
+          <TableHead className="w-[10%]">{TimestampHeader}</TableHead>
           <TableHead className="w-[20%]">{RapperHeader}</TableHead>
         </TableRow>
       </TableHeader>

@@ -11,6 +11,7 @@ import {
   ExplanationContextHeader,
   RapperHeader,
   LetterPlayHeader,
+  TimestampHeader,
 } from "@/constants";
 import { tblLetterPlaysInAllThingsBattleRapPH } from "@/db/schema";
 
@@ -31,6 +32,7 @@ export default function LetterPlaysByBattleTable({
               {letterPlay.explanationOrContext}
             </div>
           </TableCell>
+          <TableCell>{letterPlay.timestamp}</TableCell>
           <TableCell>{letterPlay.rapper}</TableCell>
         </TableRow>
       );
@@ -44,7 +46,8 @@ export default function LetterPlaysByBattleTable({
       <TableHeader>
         <TableRow>
           <TableHead className="w-[30%]">{LetterPlayHeader}</TableHead>
-          <TableHead className="w-[50%]">{ExplanationContextHeader}</TableHead>
+          <TableHead className="w-[40%]">{ExplanationContextHeader}</TableHead>
+          <TableHead className="w-[10%]">{TimestampHeader}</TableHead>
           <TableHead className="w-[20%]">{RapperHeader}</TableHead>
         </TableRow>
       </TableHeader>

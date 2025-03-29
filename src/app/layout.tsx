@@ -62,7 +62,7 @@ export default async function RootLayout({
               <NavigationMenuItem>
                 <NavigationLink
                   href="/letter-plays"
-                  name="Anagrams / Palindromes"
+                  name="Letter Plays"
                 ></NavigationLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
