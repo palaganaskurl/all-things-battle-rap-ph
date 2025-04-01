@@ -1,5 +1,5 @@
 import { tblWordPlaysInAllThingsBattleRapPH } from "@/db/schema";
-import { and, asc, eq, ilike, inArray, sql } from "drizzle-orm";
+import { and, asc, desc, eq, inArray, sql } from "drizzle-orm";
 import { BattleLeagueFilters } from "@/types/battles";
 import { db } from "@/modules/postgres";
 import { BattlesPerPage } from "@/constants";
@@ -8,13 +8,21 @@ export class WordPlaysDatabasePostgreSQL {
   constructor() {}
 
   async search(query: string) {
-    const ilikeQuery = `%${query}%`;
-
+    const similarity = sql<number>`similarity("wordPlay", ${query})`;
     const wordPlays = db
       .select()
       .from(tblWordPlaysInAllThingsBattleRapPH)
-      .where(ilike(tblWordPlaysInAllThingsBattleRapPH.wordPlay, ilikeQuery))
-      .orderBy(asc(tblWordPlaysInAllThingsBattleRapPH.dateTimestamp));
+      .where(
+        sql`${tblWordPlaysInAllThingsBattleRapPH.wordPlay} % ${sql.param(
+          query
+        )} OR ${tblWordPlaysInAllThingsBattleRapPH.wordPlay} ~ ${sql.param(
+          `.*${query}.*`
+        )}`
+      )
+      .orderBy(
+        desc(similarity),
+        asc(tblWordPlaysInAllThingsBattleRapPH.dateTimestamp)
+      );
 
     return await wordPlays;
   }

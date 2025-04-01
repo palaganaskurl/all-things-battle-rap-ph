@@ -28,6 +28,10 @@ export default async function Home() {
     { name: "Sunugan", ...battleDataByLeague["sunugan"] },
     { name: "Motus", ...battleDataByLeague["motus"] },
     { name: "Pulo", done_count: 0, all_count: 0 },
+    { name: "Tietest", done_count: 0, all_count: 0 },
+    { name: "FRBL", done_count: 0, all_count: 0 },
+    { name: "Raplines", done_count: 0, all_count: 0 },
+    { name: "Laglagan", done_count: 0, all_count: 0 },
   ];
 
   return (
