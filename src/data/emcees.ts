@@ -119,6 +119,11 @@ const emcees = {
     "Mhot / Sur Henyo",
     "Lhipkram / Jonas",
     "Don Pao",
+    "Zaki",
+    "Jonas",
+    "Asser",
+    "J-Blaque",
+    "PriceTagg",
   ],
   letterPlayEmcees: [
     "Poison13",
