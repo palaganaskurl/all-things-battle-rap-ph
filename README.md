@@ -4,8 +4,8 @@ Just a passion project.
 
 Contains nerdy data related to the Philippine battle rap scene.
 
-- [-] Word Plays (Ongoing Data Collection)
-- [-] Letter Plays (Ongoing Data Collection)
+- [ - ] Word Plays (Ongoing Data Collection)
+- [ - ] Letter Plays (Ongoing Data Collection)
 - [ ] Rhyme Schemes / Word Associations
 - [ ] Statistics
 - [ ] Battle Transcripts
