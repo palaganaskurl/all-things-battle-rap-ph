@@ -3,11 +3,15 @@
 Just a passion project.
 
 Contains nerdy data related to the Philippine battle rap scene.
-- [ ] Word Plays (History)
-- [ ] Rhyme Schemes
-- [ ] Statistics
 
-## Getting Started
+- [-] Word Plays (Ongoing Data Collection)
+- [-] Letter Plays (Ongoing Data Collection)
+- [ ] Rhyme Schemes / Word Associations
+- [ ] Statistics
+- [ ] Battle Transcripts
+- [ ] Standings
+
+## Development
 
 First, run the development server:
 
@@ -22,5 +26,3 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
