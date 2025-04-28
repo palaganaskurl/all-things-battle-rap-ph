@@ -4,7 +4,7 @@ import { MultiSelect } from "@/components/ui/multi-select-combo-box";
 import { RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 type ComboBoxItem = {
   value: string;
@@ -31,6 +31,19 @@ export default function BattleFilters({
   const [selectedEmcees, setSelectedEmcees] = useState<string[]>(
     defaultEmcees.map((item) => item.value)
   );
+  const generateQueryParameters = useCallback(() => {
+    const searchParams = new URLSearchParams();
+
+    if (selectedBattleLeagues.length > 0) {
+      searchParams.set("battleLeagues", selectedBattleLeagues.join(","));
+    }
+
+    if (selectedEmcees.length > 0) {
+      searchParams.set("emcees", selectedEmcees.join(","));
+    }
+
+    return searchParams.toString();
+  }, [selectedBattleLeagues, selectedEmcees]);
 
   return (
     <div className="flex gap-2 flex-col md:flex-row">
@@ -60,11 +73,7 @@ export default function BattleFilters({
         <Button
           className="w-full"
           onClick={() => {
-            router.push(
-              `${page}?battleLeagues=${selectedBattleLeagues.join(
-                ","
-              )}&emcees=${selectedEmcees.join(",")}`
-            );
+            router.push(`${page}?${generateQueryParameters()}`);
           }}
         >
           <RefreshCw /> Filter Battles
