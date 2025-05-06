@@ -155,6 +155,11 @@ const emcees = {
     "Jamy Sykes",
     "Hizuka",
     "Rapido",
+    "Mocks Wun",
+    "Akt",
+    "SlockOne",
+    "SirDeo",
+    "Crazymix",
   ],
   letterPlayEmcees: [
     "Poison13",
@@ -183,6 +188,7 @@ const emcees = {
     "Sinio",
     "Atoms & Cygnus",
     "Negho G & Pamoso",
+    "G-Clown",
   ],
 };
 
