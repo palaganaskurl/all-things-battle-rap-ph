@@ -17,6 +17,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import LetterPlaysByBattleTableSuspense from "./letter-plays-by-battle-table-suspense";
 import TableFooter from "@/components/custom/table-footer";
 
+export const runtime = "edge";
+
 export default async function LetterPlaysByBattlePage({
   params,
 }: {

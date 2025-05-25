@@ -7,6 +7,8 @@ import emcees from "@/data/emcees";
 import BattlesPagination from "@/components/custom/battles-pagination";
 import { battleLeaguesAsComboBoxItems, BattlesPerPage } from "@/constants";
 
+export const runtime = "edge";
+
 export default async function WordPlaysPageRoot({
   searchParams,
 }: {
