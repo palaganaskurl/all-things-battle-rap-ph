@@ -8,7 +8,7 @@ import { Pool } from "pg";
 
 export const getDb = cache(() => {
   const pool = new Pool({
-    connectionString: process.env.PG_URL,
+    connectionString: process.env.POSTGRES_URL,
     // You don't want to reuse the same connection for multiple requests
     maxUses: 1,
   });
