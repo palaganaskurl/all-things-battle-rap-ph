@@ -117,7 +117,9 @@ export class LetterPlays {
   }
 
   async searchLetterPlays(query: string) {
-    return await this.#database.search(query);
+    const decodedQuery = decodeURIComponent(query);
+
+    return await this.#database.search(decodedQuery);
   }
 
   async getUniqueVideos({ filters, pagination }: BattleLeagueFilters) {

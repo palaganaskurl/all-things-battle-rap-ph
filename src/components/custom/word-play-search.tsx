@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function WordPlaySearch({ query }: { query: string }) {
-  const [searchQuery, setSearchQuery] = useState(query);
+  const [searchQuery, setSearchQuery] = useState(decodeURIComponent(query));
   const router = useRouter();
   const handleSubmit = () => {
     router.push(`/word-plays/${searchQuery.trim()}`);
