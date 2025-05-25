@@ -1,8 +1,10 @@
 import { tblLetterPlaysInAllThingsBattleRapPH } from "@/db/schema";
 import { BattleLeagueFilters } from "@/types/battles";
 import { and, asc, desc, eq, inArray, sql } from "drizzle-orm";
-import { db } from "@/modules/postgres";
+import { getDb } from "@/modules/postgres";
 import { BattlesPerPage } from "@/constants";
+
+const db = getDb();
 
 export class LetterPlaysDatabasePostgreSQL {
   constructor() {}

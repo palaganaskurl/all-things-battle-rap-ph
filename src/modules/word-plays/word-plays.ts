@@ -1,8 +1,10 @@
 import { tblWordPlaysInAllThingsBattleRapPH } from "@/db/schema";
 import { and, asc, desc, eq, inArray, sql } from "drizzle-orm";
 import { BattleLeagueFilters } from "@/types/battles";
-import { db } from "@/modules/postgres";
+import { getDb } from "@/modules/postgres";
 import { BattlesPerPage } from "@/constants";
+
+const db = getDb();
 
 export class WordPlaysDatabasePostgreSQL {
   constructor() {}
