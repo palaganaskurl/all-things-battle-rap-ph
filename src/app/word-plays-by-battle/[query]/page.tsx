@@ -17,8 +17,6 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import TableFooter from "@/components/custom/table-footer";
 
-export const runtime = "edge";
-
 export default async function WordPlaysByBattlePage({
   params,
 }: {

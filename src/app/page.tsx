@@ -12,8 +12,6 @@ import { BattleDataByLeague } from "@/types/battles";
 import allBattles from "@/data/all-battles";
 import { Separator } from "@/components/ui/separator";
 
-export const runtime = "edge";
-
 export default async function Home() {
   const latestReleases = [
     {
