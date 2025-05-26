@@ -1,14 +1,14 @@
 const allBattles = {
   fliptop: {
-    all_count: 1259,
-    done_count: 257,
+    all_count: 1273,
+    done_count: 265,
   },
   motus: {
-    all_count: 441,
+    all_count: 450,
     done_count: 1,
   },
   sunugan: {
-    all_count: 589,
+    all_count: 590,
     done_count: 2,
   },
 };

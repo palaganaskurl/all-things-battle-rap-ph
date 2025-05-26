@@ -160,6 +160,10 @@ const emcees = {
     "SlockOne",
     "SirDeo",
     "Crazymix",
+    "MastaFeat",
+    "Left Eye Blind",
+    "Ilaya",
+    "Omar Baliw",
   ],
   letterPlayEmcees: [
     "Poison13",
@@ -189,6 +193,7 @@ const emcees = {
     "Atoms & Cygnus",
     "Negho G & Pamoso",
     "G-Clown",
+    "Maxford",
   ],
 };
 
