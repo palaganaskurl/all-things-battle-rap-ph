@@ -16,7 +16,15 @@ export default function NavigationLink({
 }) {
   const pathname = usePathname();
   const first = pathname.split("/")[1];
-  const isActive = href.replace("/", "") === first;
+  let isActive = false;
+
+  if (first === "word-plays-by-battle" && name === "Word Plays") {
+    isActive = true;
+  } else if (first === "letter-plays-by-battle" && name === "Letter Plays") {
+    isActive = true;
+  } else {
+    isActive = href.replace("/", "") === first;
+  }
 
   return (
     <Link href={href} legacyBehavior passHref>
