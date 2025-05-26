@@ -34,7 +34,16 @@ export default function WordPlaysByBattleTable({
               {wordPlay.explanationOrContext}
             </div>
           </TableCell>
-          <TableCell>{wordPlay.timestamp}</TableCell>
+          <TableCell>
+            <a
+              href={wordPlay.videoURLWithTimestamp}
+              target="_blank"
+              rel="noreferrer"
+              className="no-underline hover:underline"
+            >
+              {wordPlay.timestamp}
+            </a>
+          </TableCell>
           <TableCell>{wordPlay.rapper}</TableCell>
         </TableRow>
       );

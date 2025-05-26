@@ -32,7 +32,16 @@ export default function LetterPlaysByBattleTable({
               {letterPlay.explanationOrContext}
             </div>
           </TableCell>
-          <TableCell>{letterPlay.timestamp}</TableCell>
+          <TableCell>
+            <a
+              href={letterPlay.videoURLWithTimestamp}
+              target="_blank"
+              rel="noreferrer"
+              className="no-underline hover:underline"
+            >
+              {letterPlay.timestamp}
+            </a>
+          </TableCell>
           <TableCell>{letterPlay.rapper}</TableCell>
         </TableRow>
       );
